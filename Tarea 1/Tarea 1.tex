@@ -23,48 +23,115 @@
 \centerline{Fecha de Entrega: 2018/08/13}
 
 \begin{flushright}
-    Integrantes del grupo:\\
-    Nicholas Mc-Donnell, Persona2,\\
-    Persona3, Persona4
+	Integrantes del grupo:\\
+	Nicholas Mc-Donnell, Camilo Sánchez,\\
+	Javier Reyes, Persona4
 \end{flushright}
 
-\begin{enumerate}[label=\textbf{Problema \arabic*.}]
-    \item Muestre que para $\epsilon>0$ existe una constante $k_\epsilon>0$ tal que para todo entero positivo $n$ se cumpla que $\sigma_0(n)\leq k_\epsilon\cdot n^\epsilon$
-    \begin{sol}
-        
-    \end{sol}
+\section{Problemas}
 
-    \item Demuestre que existen constantes $A,B > 0$ tales que para todo entero positivo $n$ se tiene
-    \[An^2\leq\phi(n)\sigma_1(n)\leq Bn^2\]
-    \begin{sol}
-        
-    \end{sol}
+\begin{prob}
+	Muestre que para $\epsilon>0$ existe una constante $k_\epsilon>0$ tal que para todo entero positivo $n$ se cumpla que $\sigma_0(n)\leq k_\epsilon\cdot n^\epsilon$
+\end{prob}
 
-    \item Pruebe que para cierta constante $C \in \set{R}$ se tiene
-    \[\sum_{2\leq n\leq x}\frac{1}{n\log n}=\log\log x+C+O\left(\frac{1}{x\log x}\right)\]
-    \begin{sol}
-        
-    \end{sol}
+\begin{sol}
+    Notamos que el problema es equivalente a demostrar que hay una cota para la siguiente expresión:
+    \[\frac{\sigma_0(n)}{n^\epsilon}=\prod_{p|n}\left(\frac{1+v_p(n)}{p^{\epsilon v_p(n)}}\right)\]
+    Ya que la expresión es una función aritmética multiplicativa podemos analizarla para un termino especifico $p'$ tal que $p'|n$
+    \[\frac{1+v_{p'}(n)}{p'^{\epsilon v_{p'}(n)}}\]
+    Tomamos $p'\gg 1$ y notamos que lo siguiente se cumple
+    \[p'^{\epsilon v_{p'}(n)}\geq\underbrace{\exp(v_{p'}(n))\geq 1+v_{p'}(n)}_{\text{Por expansión de Taylor}}\]
+    \[\therefore \frac{1+v_{p'}(n)}{p'^{\epsilon v_{p'}(n)}}\leq 1\]
+    Notamos que lo anterior solo se cumple si $p'\geq\exp(\epsilon^{-1})$, veamos el caso donde esto no se cumple, para esto veamos la siguiente expresión:
+    \[\lim_{a\rightarrow\infty}\frac{1+a}{p'^{\epsilon a}}=0\]
+    Esto nos da que la expresión tiene una cota que no depende de $a$
+    \[\frac{1+a}{p'^{\epsilon a}}\leq C_{\epsilon,p'}\]
+    Con esto podemos concluir que $\sigma_0(n)/n^\epsilon$ esta acotado, lo que implica que existe un $k_\epsilon$ tal que para todo $n$
+    \[\frac{\sigma_0(n)}{n^\epsilon}\leq k_\epsilon\]
+    Lo cual es equivalente a
+    \[\sigma_0(n)\leq k_\epsilon\cdot n^\epsilon\]
+    Que es lo que queríamos demostrar\footnote{Demostración basada en el blog de Terence Tao\cite{tao}}
+\end{sol}
 
-    \item Muestre que
-    \[\sum_{n\leq x}\phi(n)=\frac{1}{2\zeta(2)}\cdot x^2+O(x\log x)\]
-    \begin{sol}
-        
-    \end{sol}
+\begin{prob}
+	Demuestre que existen constantes $A,B > 0$ tales que para todo entero positivo $n$ se tiene
+	\[An^2\leq\phi(n)\sigma_1(n)\leq Bn^2\]
+\end{prob}
 
-    \item Pruebe que
-    \[\sum_{d^2|n}\mu(d)=\begin{cases}
-        1 &\text{si $n$ es libre de cuadrados}\\
-        0 &\text{si no lo es}
-    \end{cases}\]
-    \begin{sol}
-        
-    \end{sol}
+\begin{sol}
+\cite{hardy}
+\end{sol}
 
-    \item Defina la función contadora de libres de cuadrados:
-    \[Q(x):=\#\{n\leq x: n\text{ es libre de cuadrados}\}.\]
-    Demuestre que
-    \[Q(x)=\frac{1}{\zeta(2)}\cdot x+O(x^{1/2})\]
-\end{enumerate}
+\begin{prob}
+	Pruebe que para cierta constante $C \in \set{R}$ se tiene
+	\[\sum_{2\leq n\leq x}\frac{1}{n\log n}=\log\log x+C+O\left(\frac{1}{x\log x}\right)\]
+\end{prob}
 
+\begin{sol}
+    Usando un teorema visto en clases podemos ver que esto se cumple:
+    \begin{align*}
+        \sum_{2\leq n\leq x}\frac{1}{n\log n}&=\frac{\lfloor x\rfloor}{x\log x}-\int_2^x\lfloor t\rfloor \left(\frac{1}{t\log t}\right)'\d{t}\\
+        &=\frac{x-\{x\}}{x\log x}-\int_2^x (t-\{t\}) \left(\frac{1}{t\log t}\right)'\d{t}\\
+        &=\frac{1}{\log x}+O\left(\frac{1}{x\log x}\right)-\int_2^x t \left(\frac{1}{t\log t}\right)'\d{t}+\int_2^x \{t\}\left(\frac{1}{t\log t}\right)'\d{t}\\
+        &=\frac{1}{\log x}+O\left(\frac{1}{x\log x}\right)-\int_2^x t \left(\frac{1}{t\log t}\right)'\d{t}+O\left(\frac{1}{x\log x}\right)\\
+        &=\frac{1}{\log x}+O\left(\frac{1}{x\log x}\right)-\frac{1}{\log t}\bigg\rvert_2^x+\int_2^x \frac{1}{t\log t}\d{t}\\
+        &=\frac{1}{\log x}+O\left(\frac{1}{x\log x}\right)-\frac{1}{\log x}+C'+\log\log x+C'\\
+        &=\log\log x+C+O\left(\frac{1}{x\log x}\right)
+    \end{align*}
+    Que es lo que queríamos.
+\end{sol}
+
+\begin{prob}
+	Muestre que
+	\[\sum_{n\leq x}\phi(n)=\frac{1}{2\zeta(2)}\cdot x^2+O(x\log x)\]
+\end{prob}
+
+\begin{sol}
+
+\end{sol}
+
+\begin{prob}
+	Pruebe que
+	\[\sum_{d^2|n}\mu(d)=\begin{cases}
+			1 & \text{si $n$ es libre de cuadrados} \\
+			0 & \text{si no lo es}
+		\end{cases}\]
+\end{prob}
+
+\begin{sol}
+    Reescribamos la sumatoria de la siguiente forma:
+    \begin{align*}
+        \sum_{d^2|n}\mu(d)&=\sum_{d^2|n}\mu(d)I_0(n/d^2)\\
+        &=(\mu*I_0)(n)
+    \end{align*}
+\end{sol}
+
+\begin{prob}
+	Defina la función contadora de libres de cuadrados:
+	\[Q(x):=\#\{n\leq x: n\text{ es libre de cuadrados}\}.\]
+	Demuestre que
+	\[Q(x)=\frac{1}{\zeta(2)}\cdot x+O(x^{1/2})\]
+\end{prob}
+
+\begin{sol}
+
+\end{sol}
+
+\section{Agradecimientos}
+\begin{multicols}{3}
+    \begin{itemize}
+        \item Felipe Guzmán
+
+        \item Agustín Oyarce
+
+        \item Francisco Monardes
+
+        \item Matías Bruna
+
+        \item Gabriel Ramirez
+    \end{itemize}
+\end{multicols}
+
+\bibliographystyle{unsrt}
+\bibliography{Tarea}
 \end{document}
