@@ -99,11 +99,15 @@
 \end{prob}
 
 \begin{sol}
-    Reescribamos la sumatoria de la siguiente forma:
+    Tomamos el caso donde $n$ no es libre de cuadrados, y sean $p_1,...,p_k$ primos tal que $p_i^2|n$
     \begin{align*}
-        \sum_{d^2|n}\mu(d)&=\sum_{d^2|n}\mu(d)I_0(n/d^2)\\
-        &=(\mu*I_0)(n)
+        \therefore\sum_{d^2|n}\mu(d)&=\sum_{i=0}^k\binom{k}{i}(-1)^i1^{k-i}\\
+        &=(1-1)^k\\
+        &=0
     \end{align*}
+    En el caso donde $n$ es libre de cuadrados
+    \[\sum_{d^2|n}\mu(d)=\mu(1)=1\]
+    Que es lo que queríamos demostrar
 \end{sol}
 
 \begin{prob}
@@ -121,6 +125,10 @@
 \begin{multicols}{3}
     \begin{itemize}
         \item Felipe Guzmán
+
+        \item Maximiliano Norbu
+
+        \item Fernanda Cares
 
         \item Agustín Oyarce
 
