@@ -25,72 +25,129 @@
 \begin{flushright}
 	Integrantes del grupo:\\
 	Nicholas Mc-Donnell, Camilo Sánchez,\\
-	Javier Reyes, Persona4
+	Javier Reyes
 \end{flushright}
 
 \section{Problemas}
 
-\begin{prob}
-	Muestre que para $\epsilon>0$ existe una constante $k_\epsilon>0$ tal que para todo entero positivo $n$ se cumpla que $\sigma_0(n)\leq k_\epsilon\cdot n^\epsilon$
+\begin{prob}[3 pts.]
+	Muestre que para $\varepsilon>0$ existe una constante $\kappa_\varepsilon>0$ tal que para todo entero positivo $n$ se cumpla que $\sigma_0(n)\leq k_\varepsilon\cdot n^\varepsilon$
 \end{prob}
 
 \begin{sol}
     Notamos que el problema es equivalente a demostrar que hay una cota para la siguiente expresión:
-    \[\frac{\sigma_0(n)}{n^\epsilon}=\prod_{p|n}\left(\frac{1+v_p(n)}{p^{\epsilon v_p(n)}}\right)\]
-    Ya que la expresión es una función aritmética multiplicativa podemos analizarla para un termino especifico $p'$ tal que $p'|n$
-    \[\frac{1+v_{p'}(n)}{p'^{\epsilon v_{p'}(n)}}\]
+    \[\frac{\sigma_0(n)}{n^\varepsilon}=\prod_{p|n}\left(\frac{1+v_p(n)}{p^{\varepsilon v_p(n)}}\right)\]
+    Ya que la expresión es una función aritmética multiplicativa podemos analizarla para un t\'ermino especifico $p'$ tal que $p'|n$
+    \[\frac{1+v_{p'}(n)}{p'^{\varepsilon v_{p'}(n)}}\]
     Tomamos $p'\gg 1$ y notamos que lo siguiente se cumple
-    \[p'^{\epsilon v_{p'}(n)}\geq\underbrace{\exp(v_{p'}(n))\geq 1+v_{p'}(n)}_{\text{Por expansión de Taylor}}\]
-    \[\therefore \frac{1+v_{p'}(n)}{p'^{\epsilon v_{p'}(n)}}\leq 1\]
-    Notamos que lo anterior solo se cumple si $p'\geq\exp(\epsilon^{-1})$, veamos el caso donde esto no se cumple, para esto veamos la siguiente expresión:
-    \[\lim_{a\rightarrow\infty}\frac{1+a}{p'^{\epsilon a}}=0\]
+    \[p'^{\varepsilon v_{p'}(n)}\geq\underbrace{\exp(v_{p'}(n))\geq 1+v_{p'}(n)}_{\text{Por expansión de Taylor}}\]
+    \[\therefore \frac{1+v_{p'}(n)}{p'^{\varepsilon v_{p'}(n)}}\leq 1\]
+    Notamos que lo anterior solo se cumple si $p'\geq\exp(\varepsilon^{-1})$. Veamos el caso contrario, que consta de solo finitos primos $p' < \exp(\varepsilon^{-1})$
+    \[\lim_{a\rightarrow\infty}\frac{1+a}{p'^{\varepsilon a}}=0\]
     Esto nos da que la expresión tiene una cota que no depende de $a$
-    \[\frac{1+a}{p'^{\epsilon a}}\leq C_{\epsilon,p'}\]
-    Con esto podemos concluir que $\sigma_0(n)/n^\epsilon$ esta acotado, lo que implica que existe un $k_\epsilon$ tal que para todo $n$
-    \[\frac{\sigma_0(n)}{n^\epsilon}\leq k_\epsilon\]
+    \[\frac{1+a}{p'^{\varepsilon a}}\leq C_{\varepsilon,p'}\]
+    Con esto podemos concluir que $\sigma_0(n)/n^\varepsilon$ esta acotado, lo que implica que existe un
+    \[\kappa_\varepsilon = \displaystyle\prod_{p' < \exp(\varepsilon^{-1})} C_{\varepsilon,p'}\]
+    tal que para todo $n$
+    \[\frac{\sigma_0(n)}{n^\varepsilon}\leq \kappa_\varepsilon\]
     Lo cual es equivalente a
-    \[\sigma_0(n)\leq k_\epsilon\cdot n^\epsilon\]
+    \[\sigma_0(n)\leq \kappa_\varepsilon\cdot n^\varepsilon\]
     Que es lo que queríamos demostrar\footnote{Demostración basada en el blog de Terence Tao\cite{tao}}
 \end{sol}
 
-\begin{prob}
+\begin{prob}[3 pts.]
 	Demuestre que existen constantes $A,B > 0$ tales que para todo entero positivo $n$ se tiene
 	\[An^2\leq\phi(n)\sigma_1(n)\leq Bn^2\]
 \end{prob}
 
 \begin{sol}
-\cite{hardy}
+    Recordamos que $\phi(n)=n\displaystyle\prod_{p|n}p^{-1}(p-1)$ y $\sigma_1(n)=\displaystyle\prod_{p|n}(1+p+\ldots + p^{v_p(n)})$, esto nos da lo siguiente:
+    \begin{align*}
+        \phi(n)\sigma_1(n) &= \prod_{p|n}(1+p+\ldots + p^{v_p(n)})p^{-1}(p-1)\\
+        &=n\prod_{p|n}\frac{p^{v_p(n)+1}-1}{p-1}p^{-1}(p-1)\\
+        &=n\prod_{p|n}\frac{p^{v_p(n)+1}-1}{p}\\
+        &\leq n\prod_{p|n}p^{v_p(n)}\\
+        &\leq n^2
+    \end{align*}
+    Por lo que $B=1$. Veremos ahora
+    \begin{align*}
+        \phi(n)\sigma_1(n)&=n^2\prod_{p|n}(1-p^{-1-v_p(n)})\\
+        &\geq n^2\prod_{p|n}(1-p^{-2})\\
+        &\geq n^2\prod_p(1-p^{-2})
+    \end{align*}
+    Sea $A=\prod_p(1-p^{-2})$, por lo que solo falta demostrar que esto es distinto de cero.
+    \begin{align*}
+        \log\prod_p(1-p^{-2})&=\sum_p\log(1-p^{-2})\\
+        &=\sum_p\log(p^{-2})+\log(p^2-1)\\
+        &=-\sum_p\log(p^2)-\log(p^2-1)\\
+        &=-\sum_p{\log'(\xi)}\quad\xi\in[p^2-1,p^2]\\
+        &\geq-\sum_p\frac{1}{p^2-1}
+    \end{align*}
+    Podemos ver que esta ultima suma tiene que ser convergente ya que la serie $\sum_{n=1}^\infty\frac{1}{n^\alpha}$ converge para $\alpha>1$. Esto implica que lo que teníamos es distinto de cero. Por lo que tenemos lo que queríamos.
 \end{sol}
 
-\begin{prob}
+\begin{prob}[3 pts.]
 	Pruebe que para cierta constante $C \in \set{R}$ se tiene
 	\[\sum_{2\leq n\leq x}\frac{1}{n\log n}=\log\log x+C+O\left(\frac{1}{x\log x}\right)\]
 \end{prob}
 
 \begin{sol}
-    Usando un teorema visto en clases podemos ver que esto se cumple:
+    Usando sumatoria por partes podemos ver que esto se cumple:
     \begin{align*}
-        \sum_{2\leq n\leq x}\frac{1}{n\log n}&=\frac{\lfloor x\rfloor}{x\log x}-\int_2^x\lfloor t\rfloor \left(\frac{1}{t\log t}\right)'\d{t}\\
-        &=\frac{x-\{x\}}{x\log x}-\int_2^x (t-\{t\}) \left(\frac{1}{t\log t}\right)'\d{t}\\
-        &=\frac{1}{\log x}+O\left(\frac{1}{x\log x}\right)-\int_2^x t \left(\frac{1}{t\log t}\right)'\d{t}+\int_2^x \{t\}\left(\frac{1}{t\log t}\right)'\d{t}\\
+        \sum_{2\leq n\leq x}\frac{1}{n\log n}&=\frac{\lfloor x\rfloor-1}{x\log x}-\int_2^x(\lfloor t\rfloor - 1) \left(\frac{1}{t\log t}\right)'\d{t}\\
+        &=\frac{x-\{x\}-1}{x\log x}-\int_2^x (t-\{t\} - 1) \left(\frac{1}{t\log t}\right)'\d{t}\\
+        &=\frac{1}{\log x}+O\left(\frac{1}{x\log x}\right)-\int_2^x t \left(\frac{1}{t\log t}\right)'\d{t}+\int_2^x (\{t\} + 1)\left(\frac{1}{t\log t}\right)'\d{t}\\
         &=\frac{1}{\log x}+O\left(\frac{1}{x\log x}\right)-\int_2^x t \left(\frac{1}{t\log t}\right)'\d{t}+O\left(\frac{1}{x\log x}\right)\\
         &=\frac{1}{\log x}+O\left(\frac{1}{x\log x}\right)-\frac{1}{\log t}\bigg\rvert_2^x+\int_2^x \frac{1}{t\log t}\d{t}\\
-        &=\frac{1}{\log x}+O\left(\frac{1}{x\log x}\right)-\frac{1}{\log x}+C'+\log\log x+C'\\
+        &=\frac{1}{\log x}+O\left(\frac{1}{x\log x}\right)-\frac{1}{\log x}+\log\log x+C'\\
         &=\log\log x+C+O\left(\frac{1}{x\log x}\right)
     \end{align*}
     Que es lo que queríamos.
 \end{sol}
 
-\begin{prob}
+\begin{prob}[4 pts.]
 	Muestre que
 	\[\sum_{n\leq x}\phi(n)=\frac{1}{2\zeta(2)}\cdot x^2+O(x\log x)\]
 \end{prob}
 
 \begin{sol}
-
+    Primero demostraremos un pequeño lema
+    \begin{lem}[$\sum_{a>x}\frac{1}{a^2}=O(x^{-1})$]
+        Podemos usar el test de comparación de la integral
+        \begin{align*}
+            \sum_{a>x}\frac{1}{a^2}&=\sum_{n=\floor{x}+1}^\infty\frac{1}{n^2}\\
+            &\leq\int_{\floor{x}}^\infty\frac{1}{t^2}\d{t}\\
+            &\leq-\frac{1}{t}\bigg\rvert_{\floor{x}}^\infty\\
+            &\leq\frac{1}{\floor{x}}
+        \end{align*}
+        Con esto tenemos lo pedido.
+    \end{lem}
+    Ahora, comenzamos reescribiendo la suma
+    \begin{align*}
+        \sum_{n\leq x}\phi(n)&=\sum_{n\leq x}(\mu*I_1)(n)\\
+        &=\sum_{n\leq x}\sum_{ab=n}\mu(a)b\\
+        &=\sum_{a\leq x}\sum_{1\leq b\leq \frac{x}{a}}\mu(a)b\\
+        &=\sum_{a\leq x}\mu(a)\frac{\left\lfloor\frac{x}{a}\right\rfloor^2+\left\lfloor\frac{x}{a}\right\rfloor}{2}\\
+    \end{align*}
+    Se sabe que $\lfloor x\rfloor=x+O(1)$
+    \begin{align*}
+        \sum_{n\leq x}\phi(n)&=\sum_{a\leq x}\mu(a)\frac{(\frac{x}{a})^2+O(1)\frac{x}{a}+O(1)}{2}\\
+        &=\left(\sum_{a\leq x}\frac{\mu(a)}{a^2}\right)\frac{x^2}{2}+O(x)\sum_{a\leq x}\frac{\mu(a)}{a}+O(1)\sum_{a\leq x}\mu(a)\\
+    \end{align*}
+    También se sabe que $\mu(n)=O(1)$
+    \begin{align*}
+        \sum_{n\leq x}\phi(n)&=\left(\sum_{a\leq x}\frac{\mu(a)}{a^2}\right)\frac{x^2}{2}+O(x)\sum_{a\leq x}\frac{1}{a}+O(x)\\
+        &=\left(\sum_{a\leq x}\frac{\mu(a)}{a^2}\right)\frac{x^2}{2}+O\left(x\log x\right)\\
+        &=\left(\sum_{a\in\set{N}}\frac{\mu(a)}{a^2}-\sum_{a>x}\frac{\mu(a)}{a^2}\right)\frac{x^2}{2}+O\left(x\log x\right)\\
+        &=\left(\frac{1}{\zeta(2)}-\sum_{a>x}\frac{\mu(a)}{a^2}\right)\frac{x^2}{2}+O\left(x\log x\right)\\
+        &=\frac{x^2}{2\zeta(2)}+O(x\log x)-\frac{x^2}{2}\sum_{a>x}\frac{\mu(a)}{a^2}\\
+        &=\frac{x^2}{2\zeta(2)}+O(x\log x)-O(x^2)\sum_{x>a}\frac{1}{a^2}\\
+        &=\frac{x^2}{2\zeta(2)}+O(x\log x)-O(x)\\
+        &=\frac{1}{2\zeta(2)} \cdot x^2 +O(x\log x)
+    \end{align*}
 \end{sol}
 
-\begin{prob}
+\begin{prob}[3 pts.]
 	Pruebe que
 	\[\sum_{d^2|n}\mu(d)=\begin{cases}
 			1 & \text{si $n$ es libre de cuadrados} \\
@@ -110,7 +167,7 @@
     Que es lo que queríamos demostrar
 \end{sol}
 
-\begin{prob}
+\begin{prob}[4 pts.]
 	Defina la función contadora de libres de cuadrados:
 	\[Q(x):=\#\{n\leq x: n\text{ es libre de cuadrados}\}.\]
 	Demuestre que
@@ -118,7 +175,30 @@
 \end{prob}
 
 \begin{sol}
-
+    Usando la función definida en el problema 5, podemos escribir $Q$ de la siguiente forma:
+    \begin{align*}
+        Q(x)&=\sum_{n\leq x}\sum_{d^2|n}\mu(d)\\
+        &=\sum_{d\leq x}\sum_{n\leq x/d^2}\mu(d)\\
+        &=\sum_{d\leq x}\mu(d)\floor{\frac{x}{d^2}}\\
+        &=\sum_{d\leq x}\frac{\mu(d)}{d^2}x-\sum_{d\leq x}\mu(d)\left\{\frac{x}{d^2}\right\}\\
+    \end{align*}
+    Para desarrollar la segunda parte de la expresión notamos que para $d\leq\sqrt{x}$ pasa que $\left\{\frac{x}{d^2}\right\}\leq 1$, y si $d>\sqrt{x}$ tenemos que $\left\{\frac{x}{d^2}\right\}=\frac{x}{d^2}$
+    \begin{align*}
+        \sum_{d\leq x}\mu(d)\left\{\frac{x}{d^2}\right\}&=\sum_{d\leq\sqrt{x}}O(1)+\sum_{\sqrt{x}<d\leq x}O(1)\frac{x}{d^2}\\
+        &=O(\sqrt{x})+O(x)\left(\sum_{d\leq x}\frac{1}{d^2}-\sum_{d\leq\sqrt{x}}\frac{1}{d^2}\right)\\
+        &=O(\sqrt{x})+O(x)\left(\zeta(2) - O(x^{-1}) - \zeta(2) + O(x^{-1/2})\right)\\
+        &=O(\sqrt{x})+O(1)+O(\sqrt{x})\\
+        &=O(\sqrt{x})
+    \end{align*}
+    Esto nos da lo siguiente:
+    \begin{align*}
+        Q(x)&=x\sum_{d\leq x}\frac{\mu(d)}{d^2}+O(\sqrt{x})\\
+        &=x\left(\sum_{d=1}^\infty\frac{\mu(d)}{d^2}-\sum_{d>x}\frac{\mu(d)}{d^2}\right)+O(\sqrt{x})\\
+        &=x\left(\frac{1}{\zeta(2)}+O(1)\sum_{d>x}\frac{1}{d^2}\right)+O(\sqrt{x})\\
+        &=\frac{1}{\zeta(2)}x+O(\sqrt{x})+x\cdot O(x^{-1})\\
+        &=\frac{1}{\zeta(2)}x+O(\sqrt{x})
+    \end{align*}
+    Que es lo que buscábamos.
 \end{sol}
 
 \section{Agradecimientos}
