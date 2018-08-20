@@ -33,13 +33,54 @@
 \begin{prob}[2 pts. c/u]
     Demuestre las siguientes identidades (demostrando también convergencia en el dominio indicado):
     \begin{enumerate}[label = (\roman*)]
-        \item
+        \item Sea $k\in\set{R}$. Entonces $D(s,\sigma_k)=\zeta(s)\zeta(s-k)$ para $s>\max\{1,k+1\}$
 
-        \item
+        \item $D(s,\phi)=\zeta(s-1)/\zeta(s)$ para $s>2$
 
-        \item
+        \item $D(s,\sigma_0^2)=\zeta(s)^4/\zeta(2s)$ para $s>1$
     \end{enumerate}
 \end{prob}
+\begin{sol}
+    \begin{enumerate}[label = (\roman*)]
+        \item Recordamos que $D(s,f*g)=D(s,f)D(s,g)$ y que $\sigma_k=I_0*I_k$
+        \begin{align*}
+            \therefore D(s,\sigma_k)&=D(s,I_0)D(s,I_k)\\
+            &=\zeta(s)\sum_n\frac{n^k}{n^s}\\
+            &=\zeta(s)\sum_n\frac{1}{n^{s-k}}\\
+            &=\zeta(s)\zeta(s-k)
+        \end{align*}
+        Notamos que esto converge para $s>\max\{1,k+1\}$
+
+        \item Ahora, usando que $\phi=\mu*I_1$
+        \begin{align*}
+            D(s,\phi)&=D(s,\mu)D(s,I_1)\\
+            &=\frac{1}{\zeta(s)}\zeta(s-1)\\
+            &=\frac{\zeta(s-1)}{\zeta(s)}
+        \end{align*}
+        Lo cual converge para $s>2$
+
+        \item Como sabemos que $\sigma_0$ es multiplicativa $\sigma_0^2$ también lo es, lo que nos deja expresar $D(s,\sigma_0^2)$ de la siguiente forma
+        \begin{align*}
+            D(s,\sigma_0^2)&=\prod_p\left(1+\frac{\sigma_0^2(p)}{p^s}+\frac{\sigma_0^2(p)}{p^{2s}}+...\right)
+        \end{align*}
+        Recordamos que $\sigma_0$ cuenta divisores, luego
+        \begin{align*}
+            D(s,\sigma_0^2)&=\prod_p\left(\sum_{n\geq1}\frac{n^2}{p^{s(n-1)}}\right)\\
+            &=\prod_p\frac{p^{2s}(p^s+1)}{(p^s-1)^3}
+        \end{align*}
+        Esta ultima igualdad aparece al analizar la siguiente identidad algebraica\cite{wolfram}
+        \[\sum_{k=1}^n \frac{k^2}{a^{k - 1}} = \frac{a^{1 - n} (a^{n + 1} + a^{n + 2} - a^2 n^2 - 2 a^2 n - a^2 + 2 a n^2 + 2 a n - a - n^2)}{(a - 1)^3}\]
+        Luego desarrollando esto de la siguiente forma
+        \begin{align*}
+            D(s,\sigma_0^2)&=\prod_p\frac{p^{2s}(p^s+1)}{(p^s-1)^3}\\
+            &=\prod_p\frac{p^{2s}(p^{2s}-1)}{(p^s-1)^4}\\
+            &=\prod_p\frac{\left(1-\frac{1}{p^{2s}}\right)}{\left(1-\frac{1}{p^s}\right)^4}\\
+            &=\prod_p\frac{\left(1-\frac{1}{p^s}\right)^{-4}}{\left(1-\frac{1}{p^{2s}}\right)^{-1}}\\
+            &=\frac{\zeta(s)^4}{\zeta(2s)}
+        \end{align*}
+        Como $\zeta(s)$ converge para $s>1$, lo anterior también lo hace.
+    \end{enumerate}
+\end{sol}
 
 \begin{prob}[3 pts.]
     Demuestre que cuando $s\rightarrow1^+$, la diferencia
@@ -47,6 +88,16 @@
     se mantiene acotada.
 \end{prob}
 
+\begin{sol}
+    Para $s>1$, tenemos que
+    \begin{align*}
+        \zeta(s) - \dfrac{1}{s-1} &= \sum_{n \geq 1} \dfrac{1}{n^s} - \int_1^\infty \dfrac{1}{t^s} dt\\
+        &= \int_1^\infty \dfrac{1}{\floor{t}^s} - \dfrac{1}{t^s} dt\\
+        &= \int_1^\infty O\left(\dfrac{1}{t^{2s}}\right) dt\\
+        &= O\left(\dfrac{1}{2s-1}\right)
+    \end{align*}
+    Es decir, para todo $s>1$, $\abs{\zeta(s) - \dfrac{1}{s-1}} \leq A\quad\dfrac{1}{2s-1} \leq A$, probando que tal diferencia está siempre acotada.
+\end{sol}
 \begin{prob}[2 pts.]
     Sea $f$ una función aritmética que cumple
     \begin{enumerate}[label = (\roman*)]
@@ -57,6 +108,10 @@
     Demuestre que
     \[\sum_{n\leq x}\frac{f(n)}{n}\ll(\log x)^r\]
 \end{prob}
+
+\begin{sol}
+    
+\end{sol}
 
 \begin{prob}[2 pts. c/u]
     Calcule $\sigma_c$ y $\sigma_a$ para las series de Dirichlet de las siguientes funciones aritméticas $f$:
@@ -69,10 +124,60 @@
     \end{enumerate}
 \end{prob}
 
+\begin{sol}
+    \begin{enumerate}[label = (\roman*)]
+        \item 
+
+        \item 
+
+        \item
+    \end{enumerate}
+\end{sol}
+
 \begin{prob}[3 pts.]
     Demuestre que para cada real $r\in[0,1]$ existe alguna función aritmética $f$ que cumple la relación
     \[\sigma_a(f)=\sigma_c(f)+r\]
     entre las abscisas de convergencia y de convergencia absoluta de $D(s,f)$.
 \end{prob}
+
+\begin{sol}
+    Es suficiente encontrar una funci\'on $f$ que cumpla las siguientes dos propiedades
+    \begin{itemize}
+        \item $\abs{f(n)} = n^r$.
+        \item $\abs{S_f(n)} = n$.
+    \end{itemize}
+    La primera nos asegura que $S_{\abs{f}}(n) \sim n^{r+1}$, es decir $\sigma_a(f) = 1+r$, mientras que la segunda da $\sigma_c(f) = 1$, que satisface la relación requerida.
+
+    Sea $f(1) = 1$, y para construir $f$ por inducci\'on, supongamos que $\abs{S_f(n-1)} = n-1$ y $\abs{f(n-1)} = (n-1)^r$. Sea $S$ la circunferencia de centro $S_f(n-1)$ y radio $n^r$. Como $r \in [0,1]$, entonces $1 \leq n^r \leq n$. Esto nos dice que
+    $$\max_{z \in S}\{\abs{z}\} \geq \abs{S_f(n-1)} + 1 = n\quad \text{y}$$
+    $$\min_{z \in S} \leq \min(\abs{\abs{S_f(n-1)} - n},\abs{\abs{S_f(n-1)} - 1}) = n-2$$
+    Dado que esta circunferencia tiene una parte de norma mayor o igual a $n$, y otra con norma menor a $n$, entonces existe al menos algun punto $d \in S$ tal que $\abs{d} = n$. Definimos entonces $f(n) = d - S_f(n-1)$. Por construcci\'on, $\abs{f(n)} = n^r$ y $S_f(n) = f(n) + S_f(n-1) = d$ tiene norma $n$.
+
+    Esta construcción otorga una $f$ que satisface ambas propiedades arriba.
+\end{sol}
+
+\section{Agradecimientos}
+\begin{multicols}{3}
+    \begin{itemize}
+        \item Felipe Guzmán
+
+        \item Maximiliano Norbu
+
+        \item Fernanda Cares
+
+        \item Gabriel Ramirez
+
+        \item Daniel Gajardo
+
+        \item Fernando Figueroa
+
+        \item Duvan Henao
+
+        \item Hector Pasten
+    \end{itemize}
+\end{multicols}
+
+\bibliographystyle{plain}
+\bibliography{Tarea}
 
 \end{document}
