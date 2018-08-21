@@ -18,9 +18,9 @@
 \end{minipage}
 
 \vspace{2ex}
-{\Large \centerline{\bf Tarea 1}}
+{\Large \centerline{\bf Tarea 2}}
 {\large \centerline{Teoría de Números - MAT 2225}}
-\centerline{Fecha de Entrega: 2018/08/13}
+\centerline{Fecha de Entrega: 2018/08/21}
 
 \begin{flushright}
 	Integrantes del grupo:\\
@@ -112,7 +112,16 @@
 \end{prob}
 
 \begin{sol}
-    
+    Sabemos que $\exists k\in\set{R}^+$ tal que cuando $s\rightarrow1^+$
+    \[\abs{\zeta(s)-\frac{1}{s-1}}<k\]
+    \[\displaystyle \implies \zeta(s)=\frac{1}{s-1}+O(1)\text{ cuando }s\rightarrow1^+\]
+    Forzaremos $\zeta(s)=\log x+O(1)$
+    \[\implies\log x=\frac{1}{s-1}\quad\text{con $x\geq3$ nos interesa}\quad\implies s=\frac{1}{\log x}+1\]
+    Notar que si $s\rightarrow1^+\implies s\in[1,\infty)\implies F(s)$ esta bien definida y como es continua, $F(s)$ alcanza un máximo en $[1,2]$, en particular $\exists k\in\set{R}$ tal que $F(s)<k$. Así:
+    \[K\cdot(\log x)^r\geq F(s)\cdot\zeta(s)^r=D(s,f)=\sum_{n\geq 1}\frac{f(n)}{n^s}=\sum_{n\geq 1}\frac{f(n)}{x\cdot n^{\frac{1}{\log x}}}\geq\sum_{x\geq n}\frac{f(n)}{n\cdot n^{\frac{1}{\log x}}}\geq\sum_{x\geq n}\frac{f(n)}{n\cdot x^{\frac{1}{\log x}}}\]
+    Notamos que $x^\frac{1}{\log x}=\mathrm{e}$, y así
+    \[k(\log x)^r\geq \frac{1}{\mathrm{e}}\sum_{x\geq n}\frac{f(n)}{n}\]
+    \[\therefore (\log x)^r\gg\sum_{x\geq n}\frac{f(n)}{n}\]
 \end{sol}
 
 \begin{prob}[2 pts. c/u]
@@ -128,7 +137,16 @@
 
 \begin{sol}
     \begin{enumerate}[label = (\roman*)]
-        \item 
+        \item Dado que $f(n) \geq 0$, entonces $\sigma_a = \sigma_c$. También observamos que $D(s,f) = D(s,\phi)''$. Estudiaremos $\sigma_c$ para la serie de $\phi$. Tenemos para $s > \sigma_a$.
+        \begin{align*}
+            D(s,\phi) &= \prod_p \left(1 + \dfrac{p-1}{p^s} + \dfrac{p(p-1)}{p^{2s}} + \dfrac{p^2(p-1)}{p^{3s}} + \ldots\right)\\
+            &=\prod_p \left(1 + \dfrac{p-1}{p}\sum_{k \geq 1} p^{k-ks}\right)\\
+        \end{align*}
+        El producto converge si y solo si $\sum_p \frac{p-1}{p}\sum_kp^{(1-s)k}$ converge, pero como
+        $$\dfrac{1}{2}\sum_p \sum_{k \geq 1}p^{(1-s)k}\leq\sum_p \dfrac{p-1}{p}\sum_{k\geq 1}p^{(1-s)k} \leq \sum_p \sum_{k \geq 1}p^{(1-s)k}$$
+        entonces converge si y solo si lo hace $\sum_p \sum_kp^{(1-s)k}$, que converge si y solo si converge
+        $$\prod_p \left(1 + \sum_{k \geq 1}p^{(1-s)k}\right) = \zeta(s-1)$$
+        Se concluye que para $D(s,\phi)$, $\sigma_c = \sigma_a = 2$. Dado que $\log x \ll_\varepsilon x^\varepsilon$ para todo $\varepsilon$, entonces la derivada de una serie de Dirichlet conserva las abscisas, luego para $f$, $\sigma_a = \sigma_c = 2$.
 
         \item Usando el criterio de Cauchy sobre la siguiente serie
         \[\sum_{n\geq 1}\frac{2^{-n}}{n^s}\]
@@ -140,7 +158,7 @@
             &=\frac{1}{2}\\
             &<1
         \end{align*}
-        Por lo que converge independiente de $s$, lo que nos da que $\sigma_a=\sigma_c=\infty$
+        Por lo que converge independiente de $s$, lo que nos da que $\sigma_a=\sigma_c=-\infty$
 
         \item Usando que $f(2n)=(-1)^n$ y que $f(2n-1)=i(-1)^{n+1}$ podemos escribir lo siguiente:
         \begin{align*}
@@ -157,17 +175,17 @@
 \end{prob}
 
 \begin{sol}
-    Es suficiente encontrar una funci\'on $f$ que cumpla las siguientes dos propiedades
+    Es suficiente encontrar una función $f$ que cumpla las siguientes dos propiedades
     \begin{itemize}
         \item $\abs{f(n)} = n^r$.
         \item $\abs{S_f(n)} = n$.
     \end{itemize}
     La primera nos asegura que $S_{\abs{f}}(n) \sim n^{r+1}$, es decir $\sigma_a(f) = 1+r$, mientras que la segunda da $\sigma_c(f) = 1$, que satisface la relación requerida.
 
-    Sea $f(1) = 1$, y para construir $f$ por inducci\'on, supongamos que $\abs{S_f(n-1)} = n-1$ y $\abs{f(n-1)} = (n-1)^r$. Sea $S$ la circunferencia de centro $S_f(n-1)$ y radio $n^r$. Como $r \in [0,1]$, entonces $1 \leq n^r \leq n$. Esto nos dice que
+    Sea $f(1) = 1$, y para construir $f$ por inducción, supongamos que $\abs{S_f(n-1)} = n-1$ y $\abs{f(n-1)} = (n-1)^r$. Sea $S$ la circunferencia de centro $S_f(n-1)$ y radio $n^r$. Como $r \in [0,1]$, entonces $1 \leq n^r \leq n$. Esto nos dice que
     $$\max_{z \in S}\{\abs{z}\} \geq \abs{S_f(n-1)} + 1 = n\quad \text{y}$$
     $$\min_{z \in S} \leq \min(\abs{\abs{S_f(n-1)} - n},\abs{\abs{S_f(n-1)} - 1}) = n-2$$
-    Dado que esta circunferencia tiene una parte de norma mayor o igual a $n$, y otra con norma menor a $n$, entonces existe al menos algun punto $d \in S$ tal que $\abs{d} = n$. Definimos entonces $f(n) = d - S_f(n-1)$. Por construcci\'on, $\abs{f(n)} = n^r$ y $S_f(n) = f(n) + S_f(n-1) = d$ tiene norma $n$.
+    Dado que esta circunferencia tiene una parte de norma mayor o igual a $n$, y otra con norma menor a $n$, entonces existe al menos algun punto $d \in S$ tal que $\abs{d} = n$. Definimos entonces $f(n) = d - S_f(n-1)$. Por construcción, $\abs{f(n)} = n^r$ y $S_f(n) = f(n) + S_f(n-1) = d$ tiene norma $n$.
 
     Esta construcción otorga una $f$ que satisface ambas propiedades arriba.
 \end{sol}
