@@ -59,26 +59,28 @@
         \end{align*}
         Lo cual converge para $s>2$
 
-        \item Como sabemos que $\sigma_0$ es multiplicativa $\sigma_0^2$ también lo es, lo que nos deja expresar $D(s,\sigma_0^2)$ de la siguiente forma
+        \item En primer lugar, como $\sigma_0 = I_0 \ast I_0$, entonces para $s>1$, $D(s,\sigma_0) = \zeta(s)^2$, es decir,
         \begin{align*}
-            D(s,\sigma_0^2)&=\prod_p\left(1+\frac{\sigma_0^2(p)}{p^s}+\frac{\sigma_0^2(p)}{p^{2s}}+...\right)
+            D(s,\sigma_0) = \sum_n \dfrac{\sigma_0(n)}{n} &= \prod_p \left(1 + \dfrac{2}{p^s} + \dfrac{3}{p^{2s}} + \ldots\right)\\
+            &= \prod_p \left(\dfrac{p^s}{p^s-1}\right)^2\\
+            &= \zeta(s)^2
         \end{align*}
-        Recordamos que $\sigma_0$ cuenta divisores, luego
+        Dado que $\zeta(2s) = \sum_n 1/(n^2)^s = \prod_p (1 + p^{-2s} + p^{-4s} + \ldots) = \prod_p p^{2s}/(p^{2s}-1)$, se tiene que para $s>1$
+
         \begin{align*}
-            D(s,\sigma_0^2)&=\prod_p\left(\sum_{n\geq1}\frac{n^2}{p^{s(n-1)}}\right)\\
-            &=\prod_p\frac{p^{2s}(p^s+1)}{(p^s-1)^3}
+            \zeta(s)^4/\zeta(2s) &= \prod_p \left(\dfrac{p^s}{p^s-1}\right)^4\dfrac{p^{2s}-1}{p^{2s}}\\
+            &= \prod_p \left(\dfrac{p^{s}}{p^s-1}\right)^2\dfrac{p^s+1}{p^s-1}\\
+            &= \prod_p \left(1 + \dfrac{2}{p^s} + \dfrac{3}{p^{2s}} + \ldots\right)\left(1 + 2\dfrac{1}{p^s-1}\right)\\
+            &=\prod_p \left(\sum_{k \geq 0} \dfrac{k+1}{p^{ks}}\right)\left(1 + \sum_{j \geq 1} \dfrac{2}{p^{js}}\right)\\
+            &= \prod_p \left(\sum_{k \geq 0} \dfrac{k+1}{p^{ks}} + \sum_{k \geq 0}\sum_{j \geq 1} \dfrac{2(k+1)}{p^{(k+j)s}}\right)\\
         \end{align*}
-        Esta ultima igualdad aparece al analizar la siguiente identidad algebraica\cite{wolfram}
-        \[\sum_{k=1}^n \frac{k^2}{a^{k - 1}} = \frac{a^{1 - n} (a^{n + 1} + a^{n + 2} - a^2 n^2 - 2 a^2 n - a^2 + 2 a n^2 + 2 a n - a - n^2)}{(a - 1)^3}\]
-        Luego desarrollando esto de la siguiente forma
         \begin{align*}
-            D(s,\sigma_0^2)&=\prod_p\frac{p^{2s}(p^s+1)}{(p^s-1)^3}\\
-            &=\prod_p\frac{p^{2s}(p^{2s}-1)}{(p^s-1)^4}\\
-            &=\prod_p\frac{\left(1-\frac{1}{p^{2s}}\right)}{\left(1-\frac{1}{p^s}\right)^4}\\
-            &=\prod_p\frac{\left(1-\frac{1}{p^s}\right)^{-4}}{\left(1-\frac{1}{p^{2s}}\right)^{-1}}\\
-            &=\frac{\zeta(s)^4}{\zeta(2s)}
+            \zeta(s)^4/\zeta(2s) &= \prod_p \left(\sum_{k \geq 0} \dfrac{k+1}{p^{ks}} + \sum_{k \geq 0} \dfrac{\sum_{l=0}^{k-1} 2(l+1)}{p^{ks}}\right)\\
+            &= \prod_p \left(\sum_{k \geq 0} \dfrac{k+1 + (k-1)k + 2k}{p^{ks}}\right)\\
+            &= \prod_p \sum_{k \geq 0} \dfrac{(k+1)^2}{p^{ks}}\\
+            &= \prod_p \sum_{k \geq 0} \dfrac{\sigma_0^2(p^k)}{p^{ks}}\\
+            &= D(s,\sigma_0^2)
         \end{align*}
-        Como $\zeta(s)$ converge para $s>1$, lo anterior también lo hace.
     \end{enumerate}
 \end{sol}
 
@@ -128,9 +130,23 @@
     \begin{enumerate}[label = (\roman*)]
         \item 
 
-        \item 
+        \item Usando el criterio de Cauchy sobre la siguiente serie
+        \[\sum_{n\geq 1}\frac{2^{-n}}{n^s}\]
+        se obtiene
+        \begin{align*}
+            \limsup_{n\rightarrow\infty}\sqrt[n]{\abs{\frac{2^{-n}}{n^s}}}&=\limsup_{n\rightarrow\infty}\frac{1}{2\sqrt[n]{n^s}}\\
+            &=\limsup_{n\rightarrow\infty}\frac{1}{2(\sqrt[n]{n})^s}\\
+            &=\frac{1}{2\cdot1^s}\\
+            &=\frac{1}{2}\\
+            &<1
+        \end{align*}
+        Por lo que converge independiente de $s$, lo que nos da que $\sigma_a=\sigma_c=\infty$
 
-        \item
+        \item Usando que $f(2n)=(-1)^n$ y que $f(2n-1)=i(-1)^{n+1}$ podemos escribir lo siguiente:
+        \begin{align*}
+            D(s,f)&=\sum_{n\geq1}\frac{(-1)^n}{(2n)^s}+i\sum_{n\geq1}\frac{(-1)^{n+1}}{(2n-1)^s}
+        \end{align*}
+        Donde cada parte tiene $\sigma_c=0$ por criterio de las serie alternante, y trivialmente se nota que $\sigma_a=1$, ya que $D(s,\abs{f})=D(s,1)=\zeta(s)$
     \end{enumerate}
 \end{sol}
 
