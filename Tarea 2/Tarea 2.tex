@@ -114,14 +114,13 @@
 \begin{sol}
     Sabemos que $\exists k\in\set{R}^+$ tal que cuando $s\rightarrow1^+$
     \[\abs{\zeta(s)-\frac{1}{s-1}}<k\]
-    \[\displaystyle \implies \zeta(s)=\frac{1}{s-1}+O(1)\text{ cuando }s\rightarrow1^+\]
-    Forzaremos $\zeta(s)=\log x+O(1)$
-    \[\implies\log x=\frac{1}{s-1}\quad\text{con $x\geq3$ nos interesa}\quad\implies s=\frac{1}{\log x}+1\]
+    \[ \zeta(s)=\frac{1}{s-1}+O(1)\text{ cuando }s\rightarrow1^+\]
+    Sea $\log x=\frac{1}{s-1}$
+    \[\text{$x\geq3$ nos interesa}\quad\implies s=\frac{1}{\log x}+1\]
     Notar que si $s\rightarrow1^+\implies s\in[1,\infty)\implies F(s)$ esta bien definida y como es continua, $F(s)$ alcanza un máximo en $[1,2]$, en particular $\exists k\in\set{R}$ tal que $F(s)<k$. Así:
-    \[K\cdot(\log x)^r\geq F(s)\cdot\zeta(s)^r=D(s,f)=\sum_{n\geq 1}\frac{f(n)}{n^s}=\sum_{n\geq 1}\frac{f(n)}{x\cdot n^{\frac{1}{\log x}}}\geq\sum_{x\geq n}\frac{f(n)}{n\cdot n^{\frac{1}{\log x}}}\geq\sum_{x\geq n}\frac{f(n)}{n\cdot x^{\frac{1}{\log x}}}\]
+    \[k\cdot(\log x)^r\gg F(s)\cdot\zeta(s)^r=D(s,f)=\sum_{n\geq 1}\frac{f(n)}{n^s}=\sum_{n\geq 1}\frac{f(n)}{n\cdot n^{\frac{1}{\log x}}}\geq\sum_{n \leq x}\frac{f(n)}{n\cdot n^{\frac{1}{\log x}}}\geq\sum_{n \leq x}\frac{f(n)}{n\cdot x^{\frac{1}{\log x}}}\]
     Notamos que $x^\frac{1}{\log x}=\mathrm{e}$, y así
-    \[k(\log x)^r\geq \frac{1}{\mathrm{e}}\sum_{x\geq n}\frac{f(n)}{n}\]
-    \[\therefore (\log x)^r\gg\sum_{x\geq n}\frac{f(n)}{n}\]
+    \[(\log x)^r\gg\sum_{n \leq x}\frac{f(n)}{n}\]
 \end{sol}
 
 \begin{prob}[2 pts. c/u]
