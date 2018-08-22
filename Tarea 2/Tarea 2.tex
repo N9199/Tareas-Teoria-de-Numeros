@@ -42,7 +42,7 @@
 \end{prob}
 \begin{sol}
     \begin{enumerate}[label = (\roman*)]
-        \item Recordamos que $D(s,f*g)=D(s,f)D(s,g)$ y que $\sigma_k=I_0*I_k$
+        \item Recordamos que $D(s,f*g)=D(s,f)D(s,g)$, por teorema de convolución\footnote{Esto además asegura que $f*g$ converge para $s>s_0$ si $f$ y $g$ convergen para $s>s_0$} y que $\sigma_k=I_0*I_k$
         \begin{align*}
             \therefore D(s,\sigma_k)&=D(s,I_0)D(s,I_k)\\
             &=\zeta(s)\sum_n\frac{n^k}{n^s}\\
