@@ -1,0 +1,107 @@
+\input{../Templates/Notetaking}
+
+\begin{document}
+\begin{minipage}{2.5cm}
+	\includegraphics[width=2cm]{../figures/logo1.jpg}
+\end{minipage}
+\begin{minipage}{13cm}
+	\begin{flushleft}
+		\raggedright
+		{
+			\noindent
+			{\sc Pontificia Universidad Católica de Chile\\
+				Facultad de Matemáticas\\
+				Departamento de Matemática} \smallskip \\
+			Segundo Semestre de 2018\\
+		}
+	\end{flushleft}
+\end{minipage}
+
+\vspace{2ex}
+{\Large \centerline{\bf Tarea 3}}
+{\large \centerline{Teoría de Números - MAT 2225}}
+\centerline{Fecha de Entrega: 2018/09/04}
+
+\begin{flushright}
+	Integrantes del grupo:\\
+	Nicholas Mc-Donnell, Camilo Sánchez
+\end{flushright}
+
+\begin{prob}[3 pts.]
+	Demuestre que para todo entero positivo $n$ se tiene
+	\[\theta(2n)-\theta(n)\leq 2(\log 2)n\]
+\end{prob}
+
+\begin{sol}
+	Recordamos la definición de $\theta$
+	\[\theta(x)=\sum_{p\leq x}\log p\]
+	Dado esto escribimos lo siguiente
+	\[\exp(\theta(2n)-\theta(n))=\prod_{n\leq p\leq 2n}p=L\in\set{Z}\]
+	\begin{lem}
+		Sea un primo $p\in\{n+1,n+2,...,2n-1,2n\}$ con $n\in\set{N}$, entonces $p\mid\binom{2n}{n}$.\\
+		Para demostrar esto, notemos que todo $1<n<p$ no divide a $p$, luego expandiendo $\binom{2n}{n}$
+		\[\binom{2n}{n}=\frac{(n+1)(n+2)\cdot...\cdot(2n-1)(2n)}{n!}\]
+		Como $\forall k\in\{2,3,...,n-1,n\}\quad k\nmid p$, por lo que $p/n!$ es irreductible, lo que implica que $\binom{2n}{n}=p_1^{\alpha_1}p_2^{\alpha_2}\cdot...\cdot p^{\alpha}\cdot...\cdot p_k^{\alpha_k}$, donde $\alpha>0$, por lo que $p\mid\binom{2n}{n}$
+	\end{lem}
+	Notemos que por $L$ es libre de cuadrados por construcción, luego $L\mid \binom{2n}{n}$. Vemos que $2^{2n}=\sum_{i=0}^n\binom{2n}{i}\geq\binom{2n}{n}$, por lo que $L\leq 2^{2n}$.
+	\[\therefore\theta(2n)-\theta(n)\leq2n\log2\]
+	Que es lo que queríamos demostrar.
+\end{sol}
+
+\begin{prob}[2 pts. c/u]
+	\
+	\begin{enumerate}[label = (\roman*)]
+		\item Demuestre que $\exp(\psi(n))=\mcm(1,2,...,n)$ para todo entero positivo $n$.
+
+		\item Dado cualquier polinomio $F(t)\in\set{Z}[t]$ de grado $d\geq 1$, demuestre que
+		\[\exp(\psi(d+1))\cdot\int^1_0F(t)\d{t}\]
+		es un entero.
+
+		\item Sea $G(t)=t^3(1-2t)^2(1-t)^3$. Muestre que para todo entero positivo $k$ se cumple
+		\[0<\int^1_0G(t)^k\d{t}\leq\paren{\frac{27}{16384}}^k\]
+
+		\item Muestre que para todo entero de la forma $n=8k+1$ se tiene que
+		\[\psi(n)\geq\frac{4}{5}\log(n)\]
+	\end{enumerate}
+\end{prob}
+
+\begin{sol}
+	\begin{enumerate}[label = (\roman*)]
+		\item
+
+		\item Por (I) tenemos que $\exp(\psi(n))=\mcm(1,2,...,n)$, luego
+		\[F(t)=\sum_{n=0}^da_nt^n\in\set{Z}[t]\]
+		Notamos entonces que
+		\begin{align*}
+			\exp(\psi(d+1))\int_0^1 F(t)\d{t}&=\exp(\psi(d+1))\sum_{n=0}^d\frac{a_n}{n+1}\\
+			&=\mcm(1,2,...,d+1)\sum_{n=0}^d\frac{a_n}{n+1}\\
+			&=\sum_{n=0}^da_n\frac{\mcm(1,2,...,d+1)}{n+1}
+		\end{align*}
+		Claramente vemos que $n+1\mid\mcm(1,2,...,d+1)$ para todo $n\in\{0,1,...,d\}$, por lo que $\frac{\mcm(1,2,...,d+1)}{n+1}\in\set{Z}$
+		\[\therefore \sum_{n=0}^da_n\frac{\mcm(1,2,...,d+1)}{n+1}\in\set{Z}\]
+		Y como eso es igual a $\exp(\psi(d+1))\int_0^1F(t)\d{t}$, tenemos lo que queríamos.
+
+		\item
+
+		\item
+	\end{enumerate}
+\end{sol}
+
+\begin{prob}[5 pts.]
+	Demuestre que para todo $x>1$ existe un primo $p$ que cumple $x<p<2x$.
+\end{prob}
+
+\begin{sol}
+	
+\end{sol}
+
+\begin{prob}[4 pts.]
+	Demuestre que existe una constante real estrictamente positiva $C>0$ que cumple
+	\[\prod_{p\leq x}\paren{1-\frac{1}{p}}=\frac{C}{\log x}+\BigO{\frac{1}{(\log x)^2}}\]
+\end{prob}
+
+\begin{sol}
+	
+\end{sol}
+
+\end{document}
