@@ -49,19 +49,19 @@
 \end{sol}
 
 \begin{prob}[2 pts. c/u]
-	\ 
+	\
 	\begin{enumerate}[label = (\roman*)]
 		\item Demuestre que $\exp(\psi(n))=\mcm(1,2,...,n)$ para todo entero positivo $n$.
 
 		\item Dado cualquier polinomio $F(t)\in\set{Z}[t]$ de grado $d\geq 1$, demuestre que
-		\[\exp(\psi(d+1))\cdot\int^1_0F(t)\d{t}\]
-		es un entero.
+		      \[\exp(\psi(d+1))\cdot\int^1_0F(t)\d{t}\]
+		      es un entero.
 
 		\item Sea $G(t)=t^3(1-2t)^2(1-t)^3$. Muestre que para todo entero positivo $k$ se cumple
-		\[0<\int^1_0G(t)^k\d{t}\leq\paren{\frac{27}{16384}}^k\]
+		      \[0<\int^1_0G(t)^k\d{t}\leq\paren{\frac{27}{16384}}^k\]
 
 		\item Muestre que para todo entero de la forma $n=8k+1$ se tiene que
-		\[\psi(n)\geq\frac{4}{5}(n-1)\]
+		      \[\psi(n)\geq\frac{4}{5}(n-1)\]
 	\end{enumerate}
 \end{prob}
 
@@ -70,18 +70,22 @@
 		\item
 
 		\item Por (I) tenemos que $\exp(\psi(n))=\mcm(1,2,...,n)$, luego
-		\[F(t)=\sum_{n=0}^da_nt^n\in\set{Z}[t]\]
-		Notamos entonces que
-		\begin{align*}
-			\exp(\psi(d+1))\int_0^1 F(t)\d{t}&=\exp(\psi(d+1))\sum_{n=0}^d\frac{a_n}{n+1}\\
-			&=\mcm(1,2,...,d+1)\sum_{n=0}^d\frac{a_n}{n+1}\\
-			&=\sum_{n=0}^da_n\frac{\mcm(1,2,...,d+1)}{n+1}
-		\end{align*}
-		Claramente vemos que $n+1\mid\mcm(1,2,...,d+1)$ para todo $n\in\{0,1,...,d\}$, por lo que $\frac{\mcm(1,2,...,d+1)}{n+1}\in\set{Z}$
-		\[\therefore \sum_{n=0}^da_n\frac{\mcm(1,2,...,d+1)}{n+1}\in\set{Z}\]
-		Y como eso es igual a $\exp(\psi(d+1))\int_0^1F(t)\d{t}$, tenemos lo que queríamos.
+		      \[F(t)=\sum_{n=0}^da_nt^n\in\set{Z}[t]\]
+		      Notamos entonces que
+		      \begin{align*}
+			      \exp(\psi(d+1))\int_0^1 F(t)\d{t} & =\exp(\psi(d+1))\sum_{n=0}^d\frac{a_n}{n+1}   \\
+			                                        & =\mcm(1,2,...,d+1)\sum_{n=0}^d\frac{a_n}{n+1} \\
+			                                        & =\sum_{n=0}^da_n\frac{\mcm(1,2,...,d+1)}{n+1}
+		      \end{align*}
+		      Claramente vemos que $n+1\mid\mcm(1,2,...,d+1)$ para todo $n\in\{0,1,...,d\}$, por lo que $\frac{\mcm(1,2,...,d+1)}{n+1}\in\set{Z}$
+		      \[\therefore \sum_{n=0}^da_n\frac{\mcm(1,2,...,d+1)}{n+1}\in\set{Z}\]
+		      Y como eso es igual a $\exp(\psi(d+1))\int_0^1F(t)\d{t}$, tenemos lo que queríamos.
 
-		\item
+		\item Dada la expresión $G(t)^k$, queremos encontrar un máximo en el intervalo $[0,1]$, para esto derivamos la función e igualamos a 0.
+		      \begin{align*}
+			      0 & =\frac{\d{}}{\d{t}}G(t)^k \\
+			        & =
+		      \end{align*}
 
 		\item
 	\end{enumerate}
@@ -92,6 +96,80 @@
 \end{prob}
 
 \begin{sol}
+	De la pregunta 1, tenemos lo siguiente:
+	\begin{align*}
+		\theta(n)-\theta(n/2)           & \leq\log(2)n     \\
+		\theta(n/2)-\theta(n/4)         & \leq\log(2)n/2   \\
+		                                & \vdots           \\
+		\theta(n/2^k)-\theta(n/2^{k+1}) & \leq\log(2)n/2^k
+	\end{align*}
+	Notamos que si $k>\frac{\log(n)}{\log(2)}-2$, entonces $n/2^{k+1}<2$, por lo que $\theta(n/2^{k+1})=0$. Por lo que tomamos $k=\floor{\dfrac{\log(n)}{\log(2)}-2}+1$, y sumamos, tal que
+	\[\theta(n)=\theta(n)-\theta(n/2^{k+1})\leq\log(2)n\sum_{i=0}^k\frac{1}{2^i}\leq\log(2)n\sum_{i=0}^\infty\frac{1}{2^i}=\log(2)2n\]
+	Con lo que obtenemos
+	\begin{equation}
+		\theta(n)\leq\log(2)2n\label{eq:1}
+	\end{equation}
+	Sea $n\in\set{N}$, luego por propiedades modulares existe $n_0\in\{n,n-1,n-2,...,n-7\}$ tal que $n_0=8k+1$ con $k\in\set{N}$. Y así con la pregunta 2, obtenemos
+	\[\psi(n)\geq\psi(n_0)\geq\frac{4}{5}(n_0-1)\geq\frac{4}{5}(n-8)\]
+	Por lo que conseguimos
+	\begin{equation}
+		\psi(n)\geq\frac{4}{5}(n-8)\label{eq:2}
+	\end{equation}
+	En clase vimos $\psi(n)=\sum_{k\geq1}\theta(n^{1/k})$. Con esto se obtiene
+	\[\psi(2n)=\theta(2n)+\sum_{k\geq2}\theta((2n)^{1/k})\]
+	Pero notamos que $\theta((2n)^{1/k})=0$ con $k=\ceil{\dfrac{\log2n}{\log2}}$, ya que $2>(2n)^{1/k}$.\\
+	Así $\displaystyle\psi(2n)=\theta(2n)+\sum_{k\geq2}^{\ceil{\frac{\log2n}{\log2}}}\theta((2n)^{1/k})\leq\theta(2n)+\theta(\sqrt{2n})\cdot\ceil{\dfrac{\log2n}{\log2}}$, ya que si $k_1>k_2$ se cumple que $\theta(n^{1/k_1})\leq\theta(n^{1/k_2})$.\\
+	Con esto y juntando con \eqref{eq:2} obtenemos
+	\begin{equation*}
+		\frac{4}{5}(2n-8)\leq\psi(2n)\leq\theta(2n)+\theta(\sqrt{2n})\cdot\ceil{\frac{\log2n}{\log2}}\leq\theta(2n)+\theta(\sqrt{2n})\cdot\frac{\log2n}{2}
+	\end{equation*}
+	De lo cual se obtiene
+	\begin{equation}
+		\frac45(2n-8)-\theta(\sqrt{2n})\cdot\frac{\log2n}{2}\leq\theta(2n)\label{eq:3}
+	\end{equation}
+	Usando \eqref{eq:1} se puede obtener lo siguiente
+	\begin{align}
+		-2n\log2&\leq-\theta(n)\label{eq:4}\\
+		\theta(\sqrt{2n})\cdot\frac{\log2n}{2}&\leq\sqrt{2n}\log2\log2n\label{eq:5}
+	\end{align}
+	Usando \eqref{eq:3}, \eqref{eq:4} y \eqref{eq:5}
+	\begin{equation*}
+		\frac45(2n-8)-2n\log2-\sqrt{2n}\log2\log2n\leq\theta(2n)-\theta(n)
+	\end{equation*}
+	Ahora analizando la función
+	\begin{align*}
+		f(n)&=\frac45(2n-8)-2n\log2-\sqrt{2n}\log2\log2n\\
+		&=n\paren{\frac85-2\log2-\frac{\sqrt2\log2\log2n}{\sqrt{n}}}-\frac{32}5
+	\end{align*}
+	Más aún analizando la función
+	\[g(n)==\frac85-2\log2-\frac{\sqrt2\log2\log2n}{\sqrt{n}}\]
+	Derivándola se ve
+	\begin{align*}
+		g'(n)&=\frac{\sqrt2(\log2)^2}{2n\sqrt{n}}-\frac{\sqrt2\log2}{n\sqrt{n}}+\frac{\sqrt2\log2\log n}{2n\sqrt{n}}\\
+		&=\frac{\sqrt2\log2}{2n\sqrt{n}}(\log2-2-\log{n})\\
+		&=\frac{\sqrt2\log2}{2n\sqrt{n}}\log\paren{\frac{2n}{\mathrm{e}^2}}
+	\end{align*}
+	Aquí se puede notar que si $n>\dfrac{\mathrm{e}^2}2\implies g'(n)>0$\\
+	Luego $\forall n>\dfrac{\mathrm{e}^2}2$ se tiene que $g(n)$ es creciente\\
+	Recordamos que $f(n)=n\cdot g(n)-\dfrac{28}5$, por lo que cuando $g(n)>0$, $f(n)$ será creciente.\\
+	Por inspección claramente se ve que $g(1302)>0$, más aún es el primer natural donde la función es positiva, y como $g(n)$ es creciente\footnote{$1302>\frac{\mathrm{e}^2}2$}, desde $1302$ $g(n)$ siempre es positiva.\\
+	Así $\forall n\geq1302$, se cumple que $f(n)$ es creciente, ahora de nuevo por inspección se tiene que $f(1381)>0$, y específicamente es el primer natural que cumple que la función sea positiva, y como es creciente\footnote{$1381>1302$}, $\forall n\geq1381\quad f(n)>0$\\
+	\[\forall n\geq1381\quad0<f(n)\leq\theta(2n)-\theta(n)\]
+	Es decir $\displaystyle\sum_{n\leq p\leq 2n}\log{p}>0\implies\exists p\text{ primo}:n<p<2n\quad\forall n\geq1381$, dado esto se pueden analizar los casos restantes.
+	\begin{obs}
+		Notemos que si $\exists p\in[2,2n]\cap\set{Z}$ con $n\in\set{N}$, entonces $\forall\alpha\in(n,n+1)$ se tiene que $\alpha<p<2\alpha$
+		\begin{proof}
+			Esto se puede ver ya que
+			\begin{align*}
+				n<p&\implies n+1\leq p\\
+				&\implies\alpha<n+1\leq p\\
+				&\implies\alpha<p
+			\end{align*}
+			Por otro lado $p<2n<2\alpha$, luego $\alpha<p<2\alpha$
+		\end{proof}
+	\end{obs}
+	{\flushleft
+	La observación anterior ayuda a reducir el análisis a solo los naturales}
 	
 \end{sol}
 
@@ -101,7 +179,7 @@
 \end{prob}
 
 \begin{sol}
-	
+
 \end{sol}
 
 \end{document}
