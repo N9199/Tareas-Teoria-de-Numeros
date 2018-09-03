@@ -78,36 +78,36 @@
 			                                        & =\sum_{n=0}^da_n\frac{\mcm(1,2,...,d+1)}{n+1}
 		      \end{align*}
 		      Claramente vemos que $n+1\mid\mcm(1,2,...,d+1)$ para todo $n\in\{0,1,...,d\}$, por lo que $\frac{\mcm(1,2,...,d+1)}{n+1}\in\set{Z}$
-			  \begin{equation*}
-				\therefore \sum_{n=0}^da_n\frac{\mcm(1,2,...,d+1)}{n+1}\in\set{Z}\label{eq:ii}
-			  \end{equation*}
+		      \begin{equation*}
+			      \therefore \sum_{n=0}^da_n\frac{\mcm(1,2,...,d+1)}{n+1}\in\set{Z}\label{eq:ii}
+		      \end{equation*}
 		      Y como eso es igual a $\exp(\psi(d+1))\int_0^1F(t)\d{t}$, tenemos lo que queríamos.
 
 		\item Dada la expresión $G(t)^k$, queremos encontrar un máximo en el intervalo $[0,1]$, para esto derivamos la función e igualamos a 0.
 		      \begin{align*}
-			      0 & =\frac{\d{}}{\d{t}}G(t)^k \\
-			        & =
+			      0 & =\frac{\d{}}{\d{t}}G(t)^k                    \\
+			        & =-k ((1-2t)^2(t-1)^3t^3)^{k-1} (16t^2-16t+3)
 		      \end{align*}
-			  \label{eq:iii}
+		      \label{eq:iii}
 		\item Sea $n=8k+1$ y sea $G(t)=t^3(1-2t)^2(1-t)^3$, notamos que $\deg(G^k)=8k$.\\
-		Por \eqref{eq:ii} se sabe que $\exp(\psi(n))\int_0^1G^(t)\d{t}\in\set{Z}$, más aún es estrictamente positivo
-		\begin{equation*}
-			1\leq\exp(\psi(n))\int_0^1G^k(t)\d{t}
-		\end{equation*}
-		Complementando con \eqref{eq:iii}
-		\begin{equation*}
-			1\leq\exp(\psi(n))\int_0^1G^k(t)\d{t}\leq\exp(\psi(n))\paren{\frac{3^3}{2^{14}}}^k
-		\end{equation*}
-		Así obtenemos que
-		\begin{align*}
-			&\iff\paren{\dfrac{2^{14}}{3^3}}^k\leq\exp(\psi(n))\\
-			&\iff k\paren{\log(2^{14})-\log(3^3)}\leq\psi(n)\qquad k=\frac{n-1}{8}\\
-			&\iff (n-1)\paren{\frac{\log(2^{14})-\log(3^3)}8}\leq\psi(n)
-		\end{align*}
-		Notar que $\dfrac45\leq\paren{\dfrac{\log(2^{14}-\log(3^3))}8}$
-		\begin{equation*}
-			\therefore\frac45(n-1)\leq\psi(n)
-		\end{equation*}
+		      Por \eqref{eq:ii} se sabe que $\exp(\psi(n))\int_0^1G^(t)\d{t}\in\set{Z}$, más aún es estrictamente positivo
+		      \begin{equation*}
+			      1\leq\exp(\psi(n))\int_0^1G^k(t)\d{t}
+		      \end{equation*}
+		      Complementando con \eqref{eq:iii}
+		      \begin{equation*}
+			      1\leq\exp(\psi(n))\int_0^1G^k(t)\d{t}\leq\exp(\psi(n))\paren{\frac{3^3}{2^{14}}}^k
+		      \end{equation*}
+		      Así obtenemos que
+		      \begin{align*}
+			       & \iff\paren{\dfrac{2^{14}}{3^3}}^k\leq\exp(\psi(n))                    \\
+			       & \iff k\paren{\log(2^{14})-\log(3^3)}\leq\psi(n)\qquad k=\frac{n-1}{8} \\
+			       & \iff (n-1)\paren{\frac{\log(2^{14})-\log(3^3)}8}\leq\psi(n)
+		      \end{align*}
+		      Notar que $\dfrac45\leq\paren{\dfrac{\log(2^{14}-\log(3^3))}8}$
+		      \begin{equation*}
+			      \therefore\frac45(n-1)\leq\psi(n)
+		      \end{equation*}
 	\end{enumerate}
 \end{sol}
 
@@ -219,7 +219,45 @@
 \end{prob}
 
 \begin{sol}
-
+	Utilizando la serie de $-\log (1-x)$ donde $\abs{x}<1$
+	\[-\log (1-x)=x+\frac{x^2}2+\frac{x^3}3+...\]
+	Tomando $x=1/p$
+	\[-\sum_{p\leq x}\log\paren{1-\frac1p}=\sum_{p,k\geq1}\frac1{kp^k}=\sum_{p\leq x}\frac1p+\sum_{p\leq x}\sum_{k\geq2}\frac1{kp^k}\]
+	Ahora se analiza la siguiente serie
+	\[B=\sum_p\sum_{k\geq2}\frac1{kp^k}\]
+	Y se nota que esta converge ya que
+	\[\sum_p\sum_{k\geq2}\frac1{kp^k}\leq\frac12\sum_p\sum_{k\geq2}\frac1{p^k}\leq\sum_p\frac1{p(p-1)}\leq\sum_{n\geq2}\frac1{n(n-1)}<\infty\]
+	Con esto se puede ver que
+	\[\sum_p\sum_{k\geq2}\frac1{kp^k}=B-\sum_{p>x}\sum_{k\geq2}\frac1{kp^k}\]
+	Y esto ultimo se puede analizar de la siguiente forma
+	\[\sum_p\sum_{k\geq2}\frac1{kp^k}=\sum_{p>x}\frac1{p(p-1)}\leq\sum_{n>x}\frac1{n(n-1)}=\sum_{n>x}\paren{\frac1{n-1}-\frac1n}=O\paren{\frac1x}\]
+	Ahora, se puede usar el teorema 2 de Mertens
+	\begin{align*}
+		-\sum_{p\leq x}\log\paren{1-\frac1p}&=\log\log x+M+O\paren{\frac1{\log x}}+B+O\paren{\frac1x}\\
+		&=\log\log x+B+O\paren{\frac1{\log x}}
+	\end{align*}
+	donde $B=A+M$, luego tomando exponencial se puede deducir
+	\[\prod_{p\leq x}=\frac1{\log x}\exp(-B)\exp(1+O(1/\log x))\]
+	y como
+	\[\exp(t)=1+O\paren{t}\quad t\in[0,1]\]
+	Con esto se puede concluir que
+	\begin{align*}
+		\prod_{p\leq x}\paren{1-\frac1p}&=\frac{c}{\log x}\paren{1+O\paren{\frac1{\log x}}}\\
+		&=\frac{c}{\log x}+O\paren{\frac1{\paren{\log x}^2}}
+	\end{align*}
+	Que es lo que se buscaba\cite{mertens3}
 \end{sol}
+
+\section{Agradecimientes}
+\begin{multicols}{2}
+	\begin{itemize}
+		\item Gabriel Ramirez
+
+		\item Anibal Aravena
+	\end{itemize}
+\end{multicols}
+
+\bibliographystyle{plain}
+\bibliography{Tarea.bib}
 
 \end{document}
