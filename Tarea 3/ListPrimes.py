@@ -16,7 +16,6 @@ def isPrime(n):
 
 def primes(n):
     i = l[-1] - (l[-1] % 6) + 6
-    print(i)
     while l[-1] < n:
         if isPrime(i-1):
             l.append(i-1)
@@ -28,7 +27,8 @@ def primes(n):
 n = 2
 s = "n={n},\\quad{n}<{p}<{n2}\\\\\n"
 out = ""
-while n < 1381:
+n2 = 2*n
+while n2 < 1381:
     n2 = 2*n
     p = n2-1
     while not isPrime(p):

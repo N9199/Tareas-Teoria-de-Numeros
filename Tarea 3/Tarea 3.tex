@@ -50,7 +50,7 @@
 
 \begin{prob}[2 pts. c/u]
 	\
-	\begin{enumerate}[label = (\roman*)]
+	\begin{enumerate}[label = \roman*]
 		\item Demuestre que $\exp(\psi(n))=\mcm(1,2,...,n)$ para todo entero positivo $n$.
 
 		\item Dado cualquier polinomio $F(t)\in\set{Z}[t]$ de grado $d\geq 1$, demuestre que
@@ -66,7 +66,7 @@
 \end{prob}
 
 \begin{sol}
-	\begin{enumerate}[label = (\roman*)]
+	\begin{enumerate}[label = \roman*]
 		\item
 
 		\item Por (I) tenemos que $\exp(\psi(n))=\mcm(1,2,...,n)$, luego
@@ -78,7 +78,9 @@
 			                                        & =\sum_{n=0}^da_n\frac{\mcm(1,2,...,d+1)}{n+1}
 		      \end{align*}
 		      Claramente vemos que $n+1\mid\mcm(1,2,...,d+1)$ para todo $n\in\{0,1,...,d\}$, por lo que $\frac{\mcm(1,2,...,d+1)}{n+1}\in\set{Z}$
-		      \[\therefore \sum_{n=0}^da_n\frac{\mcm(1,2,...,d+1)}{n+1}\in\set{Z}\]
+			  \begin{equation*}
+				\therefore \sum_{n=0}^da_n\frac{\mcm(1,2,...,d+1)}{n+1}\in\set{Z}\label{eq:ii}
+			  \end{equation*}
 		      Y como eso es igual a $\exp(\psi(d+1))\int_0^1F(t)\d{t}$, tenemos lo que queríamos.
 
 		\item Dada la expresión $G(t)^k$, queremos encontrar un máximo en el intervalo $[0,1]$, para esto derivamos la función e igualamos a 0.
@@ -86,8 +88,26 @@
 			      0 & =\frac{\d{}}{\d{t}}G(t)^k \\
 			        & =
 		      \end{align*}
-
-		\item
+			  \label{eq:iii}
+		\item Sea $n=8k+1$ y sea $G(t)=t^3(1-2t)^2(1-t)^3$, notamos que $\deg(G^k)=8k$.\\
+		Por \eqref{eq:ii} se sabe que $\exp(\psi(n))\int_0^1G^(t)\d{t}\in\set{Z}$, más aún es estrictamente positivo
+		\begin{equation*}
+			1\leq\exp(\psi(n))\int_0^1G^k(t)\d{t}
+		\end{equation*}
+		Complementando con \eqref{eq:iii}
+		\begin{equation*}
+			1\leq\exp(\psi(n))\int_0^1G^k(t)\d{t}\leq\exp(\psi(n))\paren{\frac{3^3}{2^{14}}}^k
+		\end{equation*}
+		Así obtenemos que
+		\begin{align*}
+			&\iff\paren{\dfrac{2^{14}}{3^3}}^k\leq\exp(\psi(n))\\
+			&\iff k\paren{\log(2^{14})-\log(3^3)}\leq\psi(n)\qquad k=\frac{n-1}{8}\\
+			&\iff (n-1)\paren{\frac{\log(2^{14})-\log(3^3)}8}\leq\psi(n)
+		\end{align*}
+		Notar que $\dfrac45\leq\paren{\dfrac{\log(2^{14}-\log(3^3))}8}$
+		\begin{equation*}
+			\therefore\frac45(n-1)\leq\psi(n)
+		\end{equation*}
 	\end{enumerate}
 \end{sol}
 
@@ -170,9 +190,9 @@
 	\end{obs}
 	{\flushleft La observación anterior ayuda a reducir el análisis a solo los naturales}
 	\begin{lem}
-		Sea $n\in\set{N}$ y $p_1,p_2$ primos tales que $n<p_1<2n$ y $p_1<p_2<2p_1$. Entonces $\forall a\in\{n+1,n+2,...,p_1-2,p_1-1\}$ se tiene que $a<p_1<2a$
+		Sea $n\in\set{N}$ y $p$ primo tal que $n<p<2n$. Entonces $\forall a\in\{n+1,n+2,...,p-2,p-1\}$ se tiene que $a<p<2a$
 		\begin{proof}
-			Se tiene que $n<a<p_1$ y $p_1<2n<2a$, por lo que $a<p_1<2a$
+			Se tiene que $n<a<p$ y $p<2n<2a$, por lo que $a<p<2a$
 		\end{proof}
 	\end{lem}
 	{\flushleft El lema anterior nos reduce a los siguientes casos}
