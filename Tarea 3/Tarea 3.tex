@@ -104,9 +104,16 @@
 
 		\item Dada la expresión $G(t)^k$, queremos encontrar un máximo en el intervalo $[0,1]$, para esto derivamos la función e igualamos a 0.
 		      \begin{align*}
-			      0 & =\frac{\d{}}{\d{t}}G(t)^k                   \\
-			        & =-k ((1-2t)^2(t-1)^3t^3)^{k-1} (4t-3)(4t-1)
+			      0 & =\frac{\d{}}{\d{t}}G(t)^k                          \\
+			        & =k ((1-2t)^{2k-1}(1-t)^{3k-1}t^{3k-1})(4t-3)(4t-1)
 		      \end{align*}
+		      Con esto notamos que los ceros de la derivada que no son ceros del polinomio son $\dfrac34,\dfrac14$
+		      \begin{align*}
+				  &G^k(3/4)=\paren{(1-3/2)^2(1-3/4)^3(3/4)^3}^k=\paren{\frac{3^3}{2^{14}}}^k\\
+				  &G^k(1/4)=\paren{(1-1/2)^2(1-1/4)^3(1/4)^3}^k=\paren{\frac{3^3}{2^{14}}}^k
+			  \end{align*}
+			  Lo que nos lleva a notar que el intervalo tiene largo $1$, por lo que $\paren{\dfrac{3^3}{2^{14}}}^k$ es cota de la integral, generando la siguiente desigualdad
+			  \[\int^1_0G(t)^k\d{t}\leq\paren{\frac{27}{16384}}^k\]
 		      Para ver la otra desigualdad, se puede notar que $G^k$ es una función continua, y por la otra desigualdad sabemos que $\exists c\in[0,1]:G^k(c)>0$, y como es continua existe un abierto $A=(c-\varepsilon,c+\varepsilon)\subset[0,1]$ tal que $\forall x\in A:g(x)>0$, con esto se puede ver que
 		      \[\int_{c-\varepsilon}^{c+\varepsilon}G^k(t)\d{t}>0\]
 		      Y como $A\subset[0,1]$
