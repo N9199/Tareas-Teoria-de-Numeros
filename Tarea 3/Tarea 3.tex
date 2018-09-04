@@ -61,13 +61,32 @@
 		      \[0<\int^1_0G(t)^k\d{t}\leq\paren{\frac{27}{16384}}^k\]
 
 		\item Muestre que para todo entero de la forma $n=8k+1$ se tiene que
-		      \[\psi(n)\geq\frac{4}{5}(n-1)\]
+		      \[\psi(n)\geq\frac45(n-1)\]
 	\end{enumerate}
 \end{prob}
 
 \begin{sol}
 	\begin{enumerate}[label = \roman*]
-		\item
+		\item Sea $k\in\{1,...,n\}$, luego $k=p_1^{\alpha_1}\cdot...\cdot p_c^{\alpha_c}$ con $p_j$ primos distintos y $\alpha_j$ sus respectivos exponentes en la descomposición prima.
+		      \[p_j^{\alpha_j}\mid k\implies p_j^{\alpha_j}\leq n\]
+		      Luego por definición de $\psi(n)$ se tiene que
+		      \[p_j^{\alpha_j}\mid\exp(\psi(n))\quad\forall j\in\{1z,...,c\}\]
+		      Se puede ver que $p_1^{\alpha_1},p_2^{\alpha_2}$ son coprimos, por lo que
+		      \[p_1^{\alpha_1}p_2^{\alpha_2}\mid\exp(\psi(n))\]
+		      Luego $p_1^{\alpha_1}p_2^{\alpha_2},p_3^{\alpha_3}$ son coprimos
+		      \[p_1^{\alpha_1}p_2^{\alpha_2}p_3^{\alpha_3}\mid\exp(\psi(n))\]
+		      Notamos que este proceso se puede iterar tal que
+		      \[k\mid\exp(\psi(n))\]
+		      Esto se cumple $\forall k\in\{1,...,n\}\implies\exp(\psi(n))$ es múltiplo de los primeros $n$ números.\\
+		      Se concluye que
+		      \[\mcm(1,...,n)\leq\exp(\psi(n))\]
+		      Viendo que $\exp(\psi(n))=p_1^{\alpha_1}\cdot...\cdot p_r^{\alpha_r}$ con $p_j$ primos distintos, $p_r$ el mayor primo menor que $n$ y $\alpha_j$ el mayor natural tal que $p_j^{\alpha_j}\leq n$.\\
+		      Por definición de $\psi(n)$
+		      \[p_1^{\alpha_1}\leq n\implies p_1^{\alpha_1}\mid\mcm(1,...,n)\]
+		      Así $\forall p_j^{\alpha_j}$ en la descomposición de $\exp(\psi(n))$ se tiene que $p_j^{\alpha_j}\mid\mcm(1,...,n)$\\
+		      Nuevamente iterando los $p_1^{\alpha_1},p_2^{\alpha_2},...,p_r^{\alpha_r}$ son coprimos de a pares por lo que iterando el argumento anterior obtenemos que
+		      \[\exp(\psi(n))\mid\mcm(1,...,n)\]
+		      Se concluye entonces que $\exp(\psi(n))=\mcm(1,...,n)$
 
 		\item Por (I) tenemos que $\exp(\psi(n))=\mcm(1,2,...,n)$, luego
 		      \[F(t)=\sum_{n=0}^da_nt^n\in\set{Z}[t]\]
@@ -85,10 +104,22 @@
 
 		\item Dada la expresión $G(t)^k$, queremos encontrar un máximo en el intervalo $[0,1]$, para esto derivamos la función e igualamos a 0.
 		      \begin{align*}
-			      0 & =\frac{\d{}}{\d{t}}G(t)^k                    \\
-			        & =-k ((1-2t)^2(t-1)^3t^3)^{k-1} (16t^2-16t+3)
+			      0 & =\frac{\d{}}{\d{t}}G(t)^k                   \\
+			        & =-k ((1-2t)^2(t-1)^3t^3)^{k-1} (4t-3)(4t-1)
 		      \end{align*}
-		      \label{eq:iii}
+		      Para ver la otra desigualdad, se puede notar que $G^k$ es una función continua, y por la otra desigualdad sabemos que $\exists c\in[0,1]:G^k(c)>0$, y como es continua existe un abierto $A=(c-\varepsilon,c+\varepsilon)\subset[0,1]$ tal que $\forall x\in A:g(x)>0$, con esto se puede ver que
+		      \[\int_{c-\varepsilon}^{c+\varepsilon}G^k(t)\d{t}>0\]
+		      Y como $A\subset[0,1]$
+		      \[\int_0^1G^k(t)\d{t}=\int_0^{c-\varepsilon}G^k(t)\d{t}+\int_{c-\varepsilon}^{c+\varepsilon}G^k(t)\d{t}+\int_{c+\varepsilon}^1G^k(t)\d{t}\]
+		      Trivialmente se nota que $G^k(t)\geq0\forall t\in[0,1]$, por lo que
+		      \[\int_0^{c-\varepsilon}G^k(t)\d{t},\int_{c+\varepsilon}^1G^k(t)\d{t}\geq0\]
+		      Lo que a su vez nos deja concluir que
+		      \[\int_0^1G^k(t)\d{t}>0\]
+		      Juntando esto con lo anterior tenemos que
+		      \begin{equation*}
+			      0<\int^1_0G(t)^k\d{t}\leq\paren{\frac{27}{16384}}^k\label{eq:iii}
+		      \end{equation*}
+
 		\item Sea $n=8k+1$ y sea $G(t)=t^3(1-2t)^2(1-t)^3$, notamos que $\deg(G^k)=8k$.\\
 		      Por \eqref{eq:ii} se sabe que $\exp(\psi(n))\int_0^1G^(t)\d{t}\in\set{Z}$, más aún es estrictamente positivo
 		      \begin{equation*}
@@ -233,8 +264,8 @@
 	\[\sum_p\sum_{k\geq2}\frac1{kp^k}=\sum_{p>x}\frac1{p(p-1)}\leq\sum_{n>x}\frac1{n(n-1)}=\sum_{n>x}\paren{\frac1{n-1}-\frac1n}=O\paren{\frac1x}\]
 	Ahora, se puede usar el teorema 2 de Mertens
 	\begin{align*}
-		-\sum_{p\leq x}\log\paren{1-\frac1p}&=\log\log x+M+O\paren{\frac1{\log x}}+B+O\paren{\frac1x}\\
-		&=\log\log x+B+O\paren{\frac1{\log x}}
+		-\sum_{p\leq x}\log\paren{1-\frac1p} & =\log\log x+M+O\paren{\frac1{\log x}}+B+O\paren{\frac1x} \\
+		                                     & =\log\log x+B+O\paren{\frac1{\log x}}
 	\end{align*}
 	donde $B=A+M$, luego tomando exponencial se puede deducir
 	\[\prod_{p\leq x}=\frac1{\log x}\exp(-B)\exp(1+O(1/\log x))\]
@@ -242,8 +273,8 @@
 	\[\exp(t)=1+O\paren{t}\quad t\in[0,1]\]
 	Con esto se puede concluir que
 	\begin{align*}
-		\prod_{p\leq x}\paren{1-\frac1p}&=\frac{c}{\log x}\paren{1+O\paren{\frac1{\log x}}}\\
-		&=\frac{c}{\log x}+O\paren{\frac1{\paren{\log x}^2}}
+		\prod_{p\leq x}\paren{1-\frac1p} & =\frac{c}{\log x}\paren{1+O\paren{\frac1{\log x}}}  \\
+		                                 & =\frac{c}{\log x}+O\paren{\frac1{\paren{\log x}^2}}
 	\end{align*}
 	Que es lo que se buscaba\cite{mertens3}
 \end{sol}
