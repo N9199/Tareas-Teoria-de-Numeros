@@ -36,7 +36,22 @@
 \end{prob}
 
 \begin{sol}
-	
+	Desarrollando las expresiones de la siguiente forma
+	\begin{align*}
+		5x & \equiv 4\mod 7 3x & \equiv 2\mod 8 \\
+		x  & \equiv 5\mod 7 x  & \equiv 6\mod 8
+	\end{align*}
+	Ahora se puede usar el teorema chino del resto y su inversa, con lo que tenemos
+	\[\psi:\set{Z}_{56}\rightarrow\set{Z}_7\times\set{Z}_8\]
+	Además $-1\cdot 7+1\cdot 8=1$, por lo que $\psi(-7)=(0,1)$ y $\psi(8)=(1,0)$. Vemos que encontrar $x$ que cumple las ecuaciones es equivalente a encontrar $\psi(x)=(5,6)$.
+	\begin{align*}
+		(5,6) & =5\cdot(1,0)+6\cdot(0,1) \\
+		      & =5\psi(8)+6\psi(-7)      \\
+		      & =\psi(5\cdot8-6\cdot7)   \\
+		      & =\psi(-2)                \\
+		      & =\psi(54)
+	\end{align*}
+	Por lo que $\forall k\in\set{Z}, x=54+56k$ es solución del sistema
 \end{sol}
 
 \begin{prob}[3 pts]
@@ -44,7 +59,20 @@
 \end{prob}
 
 \begin{sol}
-	
+	Sea $p$ primo distinto de $2$, entonces $p\equiv 1\mod 4$ o $p\equiv 3 \mod 4$, veamos lo elementos de $\paren{\set{Z}_p}^\times=\{,1,2,...,p-1\}$, recordamos que es un cuerpo por lo que podemos particionarlo usando la siguiente clase de equivalencia
+	\[\{x,-x,x^{-1},-x^{-1}\}\]
+	Esta clase de equivalencia es de a lo más $4$ elementos, veamos los siguientes casos
+	\begin{itemize}
+		\item Si $x\equiv -x\mod p\implies 2x\equiv 0\mod p\implies 2\equiv 0\mod p\vee x\equiv 0\mod p$, pero $p\neq2$, y $x\not\equiv 0\mod p$, por lo que este caso no pasa.
+
+		\item Si $x\equiv x^{-1}\mod p\implies x^2\equiv 1\mod p\implies (x-1)(x+1)\equiv 0 \mod p$, por lo que $x=1$ o $x=p-1$, esta partición es $\{1,p-1\}$
+
+		\item Si $x\equiv -x^{-1}\mod p\implies x^2\equiv -1\mod p$, dado esto, podemos tener cero o dos soluciones ($x, p-x$). Asumamos que existe $x_0\in\set{Z}_p$ tal que $x_0^2\equiv -1\mod p$, y que además existe $y_0\in\set{Z}_p$ tal que $y_0^2\equiv -1\mod p$. Luego $x_0^2-y_0^2\equiv 0\mod p\implies x_0\equiv y_0\mod p \vee x_0\equiv -y_0\mod p$, una impica que $x_0=y_0$ y el otro implica que $y_0=p-x_0$, ambas son contradicciones, por lo tanto solo hay dos soluciones de la equivalencia dado un $p$, por lo que solo hay una clase de equivalencia de la forma $\{x_0,p-x_0\}$
+	\end{itemize}
+	Fuera de estos todas las clases son de tamaño $4$, si $p=4k+1$, hay $4k$ elementos en $\paren{\set{Z}_p}^\times$, luego recordamos que esta $\{1,p-1\}$, por lo que nos quedan $4k-2$ elementos, como todas las clases de equivalencia son de tamaño $4$ o son la única clase de la forma $\{x_0,p-x_0\}$, esta clase tiene que existir por conteo.
+	Es decir $p\equiv1\mod 4\implies\exists x_0\in\set{Z}_p:x_0^2\equiv-1\mod p$
+	Si $p=4k+3$, $\paren{\set{Z}_p}^\times$ tiene $4k+2$ elementos, por lo que nos queda $\{1,p-1\}$ y las particiones de tamaño $4$, por lo que $x^2\equiv -1\mod p$ no tiene soluciones
+	Con esto se concluye que $\exists x_0:x_0^2\equiv -1\mod p\implies p\equiv1\mod 4$
 \end{sol}
 
 \begin{prob}[3 pts c/u]
@@ -57,7 +85,24 @@
 \end{prob}
 
 \begin{sol}
-	
+	\begin{enumerate}[label = \roman*)]
+		\item Asumamos que existen finitos primos de la forma $p\equiv 1\mod 4$, luego sea $n=4\paren{p_1\cdot...\cdot p_l}^2+1$, donde $p_j\equiv 1\mod 4$.
+		      \begin{align*}
+			      n                                 & \equiv 1\mod 4 \\
+			      \paren{2p_1\cdot...\cdot p_l}^2+1 & \equiv 1\mod 4
+		      \end{align*}
+		      Si $n$ es primo tenemos una contradicción inmediata, ya que $p_j\nmid n$. Ahora, notamos que por ejercicio 2, la ecuación $a^2\equiv-1\mod p$ solo tiene solución para $p\equiv 1\mod 4$, por lo que existe $p\mid n$, tal que $p\equiv 1\mod 4$, lo que también es una contradicción. Por lo que hay infinitos primos de esta forma.
+
+		\item Supongamos que existen finitos primos de la forma $p\equiv 3\mod4$, luego sea $n=4(p_1\cdot...\cdot p_l)-1$, donde $p_j\equiv 3\mod 4$, notamos que $p_j\nmid n$, por lo que
+		      \[p\mid n\implies p\equiv1\mod4\]
+		      Luego $n=p_1^{\alpha_1}\cdot...\cdot p_k^{\alpha_k}$, donde son primos de la forma $p_i\equiv1\mod4$, por lo que
+		      \begin{align*}
+			      n & \equiv\prod_i p_i^{\alpha_i}\mod 4 \\
+			        & \equiv\prod_i 1^{\alpha_i}\mod 4   \\
+			        & \equiv1\mod 4
+		      \end{align*}
+		      Pero recordamos que $n\equiv 3\mod 4$, por lo que hay infinitos primos de la forma $p\equiv3\mod4$
+	\end{enumerate}
 \end{sol}
 
 \begin{prob}[4 pts.]
@@ -66,7 +111,30 @@
 \end{prob}
 
 \begin{sol}
-	
+	Se puede notar que el carácter no trivial es el siguiente:
+	\begin{displaymath}
+		\chi(n)=\begin{cases}
+			1  & n\equiv1\mod4       \\
+			-1 & n\equiv3\mod4       \\
+			0  & \text{en otro caso}
+		\end{cases}
+	\end{displaymath}
+	Por lo que se sabe que
+	\[
+		L(1,chi)=\sum_{n\geq1}\frac{\chi(n)}{n}=\sum_{k\geq0}\paren{\frac1{4k+1}-\frac1{4k+3}}
+	\]
+	Por otro lado
+	\begin{align*}
+		\arctan(1) & =\int_0^1\frac1{1+x^2}\d{x}                               \\
+		           & =\int_0^1(1-x^2+x^4-x^6+...)\d{x}                         \\
+		           & =x-\frac{x^3}3+\frac{x^5}5-\frac{x^7}7+...\bigg\rvert_0^1 \\
+		           & = 1 -\frac13+\frac15-\frac17+...                          \\
+		           & =\sum_{k\geq0}\frac1{4k+1}-\frac1{4k+3}
+	\end{align*}
+	Usando la identidad de la progresión geométrica
+	\[\frac1{1-r}=1+r+r^2+r^3+...\]
+	Y tomamos $r=-x^2$, lo cual es menor igual a uno, por lo que se cumple. Con esto se ve que
+	\[L(1,\chi)=\arctan(1)=\frac\pi4\]
 \end{sol}
 
 \begin{prob}[4 pts.]
@@ -76,7 +144,19 @@
 \end{prob}
 
 \begin{sol}
-	
+	Sea $p(x)\in\set{Z}[x]$ tal que la siguiente congruencia solo tenga solución en finitos primos $A+\{p_1,...,p_l\}$
+	\begin{displaymath}
+		f(x)\equiv 0\mod p
+	\end{displaymath}
+	Luego nos tomamos $n\in\set{Z}$ tal que $p(n)=a\neq 0$ y construimos el polinomio
+	\begin{displaymath}
+		q(x)=a^{-1}p(n+x\cdot p_1\cdot...\cdot p_l\cdot a)
+	\end{displaymath}
+	Notamos que este polinomio pertenece a $\set{Z}[x]$.
+	\begin{displaymath}
+		\therefore q(x)\equiv 1\mod p_i\quad\text{donde $p_i\in A$}
+	\end{displaymath}
+	Por lo que existe $p\notin A: p\mid q(x)$ para algún $x$, luego si $p\mid q(x)\implies p\mid p(n+x\cdot p_1\cdot...\cdot p_l\cdot a\implies \exists \alpha:p(\alpha)\equiv 0\mod p$, pero $p\notin A$ lo que es una contradicción. Tienen que haber infinitos primos tal que tenga solucón.
 \end{sol}
 
 \end{document}
