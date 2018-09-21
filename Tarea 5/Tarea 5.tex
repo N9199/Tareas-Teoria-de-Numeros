@@ -1,0 +1,103 @@
+\input{../Templates/Notetaking}
+
+\begin{document}
+\begin{minipage}{2.5cm}
+	\includegraphics[width=2cm]{../figures/logo1.jpg}
+\end{minipage}
+\begin{minipage}{13cm}
+	\begin{flushleft}
+		\raggedright
+		{
+			\noindent
+			{\sc Pontificia Universidad Católica de Chile\\
+				Facultad de Matemáticas\\
+				Departamento de Matemática} \smallskip \\
+			Segundo Semestre de 2018\\
+		}
+	\end{flushleft}
+\end{minipage}
+
+\vspace{2ex}
+{\Large \centerline{\bf Tarea 5}}
+{\large \centerline{Teoría de Números - MAT 2225}}
+\centerline{Fecha de Entrega: 2018/09/11}
+
+\begin{flushright}
+	Integrantes del grupo:\\
+	Nicholas Mc-Donnell, Camilo Sánchez\\
+	Felipe Guzmán, Fernanda Cares
+\end{flushright}
+
+\begin{prob}[6 pts.]
+	Sea $N$ un entero positivo y sea $\chi$ un carácter no-principal modulo $N$. Demuestre que
+	\[\sum_{n\leq x}\frac{\chi(n)}{\sqrt{n}}=L(1/2,\chi)+O_\chi\paren{\frac1{\sqrt{n}}}\]
+\end{prob}
+
+\begin{sol}
+	Se sabe que
+	\begin{align*}
+		L(1/2,\chi) & =\sum_{n\geq1}\frac{\chi(n)}{\sqrt{n}}                                     \\
+		            & =\sum_{n>x}\frac{\chi(n)}{\sqrt{n}}+\sum_{n\leq x}\frac{\chi(n)}{\sqrt{n}}
+	\end{align*}
+	Por lo que podemos escribir lo siguiente
+	\begin{align*}
+		\sum_{n\leq x}\frac{\chi(n)}{\sqrt{n}}=L(1/2,\chi)-\sum_{n>x}\frac{\chi(n)}{\sqrt{n}}
+	\end{align*}
+	Ahora vamos a analizar la expresión $\displaystyle\sum_{n>x}\frac{\chi(n)}{\sqrt{n}}$.\\
+	Recordamos que $\abs{\sum_{n\leq t}\chi(n)}\leq\phi(N)$ que es $\sum_{n\leq t}\chi(n)=O_\chi\paren{1}\label{star}$. Ahora sea $T>x$, vemos que
+	\begin{align*}
+		\sum_{T>n>x}\frac{\chi(n)}{n} & =\sum_{T>n}\frac{\chi(n)}{n}-\sum_{n>x}\frac{\chi(n)}{n}                                                                                                     \\
+		                              & =\frac{\sum_{T>n}}{\sqrt{T}}+\int_1^T\frac{\sum_{t>n}\chi(n)}{2t\sqrt{t}}\d{t}-\frac{\sum_{x>n}}{\sqrt{x}}-\int_1^x\frac{\sum_{t>n}\chi(n)}{2t\sqrt{t}}\d{t} \\
+		                              & =\frac{\sum_{T>n}\chi(n)}{\sqrt{T}}-frac{\sum_{x>n}\chi(n)}{\sqrt{x}}+\int_x^T\frac{\sum_{t>n}\chi(n)}{2t\sqrt{t}}\d{t}
+	\end{align*}
+	Ahora usamos \eqref{star}
+	\begin{align*}
+		\sum_{T>n>x}\frac{\chi(n)}{n} & = \frac{O_\chi(1)}{\sqrt{T}}+\frac{O_\chi(1)}{\sqrt{x}}+\int_x^T\frac{O_\chi(1)}{2t\sqrt{t}}\d{t}                            \\
+		                              & =O_\chi\paren{\frac1{\sqrt{T}}}+O_\chi\paren{\frac1{\sqrt{x}}}+O_\chi\paren{\frac1{\sqrt{t}}}+O_\chi\paren{\frac1{\sqrt{x}}} \\
+		                              & =O_\chi\paren{\frac1{\sqrt{T}}}+O_\chi\paren{\frac1{\sqrt{x}}}
+	\end{align*}
+	Por lo que obtenemos
+	\begin{equation*}
+		\sum_{T>n>x}\frac{\chi(n)}{\sqrt{n}}=O_\chi\paren{\frac1{\sqrt{T}}}+)_\chi\paren{\frac1{\sqrt{x}}}
+	\end{equation*}
+	Ahora tomamos $T\rightarrow\infty$, por lo que $O_\chi\paren{\dfrac1{\sqrt{T}}}\rightarrow0$
+	\begin{equation*}
+		\sum_{n>x}\frac{\chi(n)}{\sqrt{n}}=\lim_{T\rightarrow\infty}\sum_{T>n>x}\frac{\chi(n)}{n}=O_\chi\paren{\frac1{\sqrt{x}}}
+	\end{equation*}
+	Juntando todo tenemos
+	\begin{equation*}
+		\sum_{n\leq x}\frac{\chi(n)}{\sqrt{n}}=L(1/2,\chi)+O_\chi\paren{\frac1{\sqrt{n}}}
+	\end{equation*}
+\end{sol}
+
+\begin{prob}[7 pts.]
+	Sea $N$ un entero positivo y sea $\chi$ un carácter no-principal modulo $N$. Demuestre que existe una constante $M_\chi\in\set{C}$ tal que
+	\[\sum_{p\leq x}\frac{\chi(p)}{p}=M_\chi+O_\chi\paren{\frac1{\log x}}\]
+\end{prob}
+
+\begin{sol}
+	Se nota que
+	\begin{align*}
+		\sum_{p\leq x}\frac{\chi(p)}{p} & =\sum_{p\leq x}\frac{\chi(p)\log p}{p}\cdot \frac{1}{\log p}                                                               \\
+		                                & =\frac1{\log x}\sum_{p\leq x}\frac{\chi(p)\log p}{p}+\int_2^x\frac1{t(\log t)^2}\sum_{p\leq t}\frac{\chi(p)\log p}{p}\d{t}
+	\end{align*}
+	Se sabe que $\displaystyle \sum_{p\leq x}\frac{\chi(p)\log p}{p}=O_\chi\paren{1}$, con lo cual se ve lo siguiente
+	\begin{align*}
+		\sum_{p\leq x}\frac{\chi(p)}{p} & =\frac{O_\chi\paren{1}}{\log x}+\int_2^x\frac{O_\chi\paren{1}}{t(\log t)^2}\d{t}                                                            \\
+		                                & =\frac{O_\chi\paren{1}}{\log x}+\int_2^\infty\frac{O_\chi\paren{1}}{t(\log t)^2}\d{t}-\int_x^\infty\frac{O_\chi\paren{1}}{t(\log t)^2}\d{t} \\
+		                                & =O_\chi\paren{\frac1{\log x}}+C_\chi+O_\chi\paren{\frac1{\log x}}+K_\chi                                                                    \\
+		                                & =M_\chi + O_\chi\paren{\frac1{\log x}}
+	\end{align*}
+	Ya que las integrales correspondientes convergen.
+\end{sol}
+
+\begin{prob}
+	Sea $N$ un entero positivo y sea $a$ un entero coprimo con $N$. Demuestre que existe una constante $C_{a,N}\in\set{R}$ que solo depende de $a$ y de $N$ tal que
+	\[\sum_{\substack{p\leq x\\ p\equiv a\!\!\!\!\mod N}}\frac1p=\frac1{\phi(N)}\cdot\log\log x+C_{a,N}+O_N\paren{\frac1{\log x}}\]
+\end{prob}
+
+\begin{sol}
+
+\end{sol}
+
+\end{document}
