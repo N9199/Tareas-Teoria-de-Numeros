@@ -241,7 +241,6 @@ TSWLatexianTemp*
 # generated if using elsarticle.cls
 *.spl
 
-/Templates/
 /Dems/
 /figures/
 .DS_STORE

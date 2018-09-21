@@ -1,0 +1,58 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsthm, amsmath, amssymb}
+\usepackage{mathtools}
+\usepackage{setspace}\onehalfspacing
+\usepackage[loose,nice]{units}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{color,graphicx}
+\usepackage{fullpage}
+\usepackage{multicol}
+
+\graphicspath{{../figures/}}
+
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\set}[1]{\mathbb{#1}}
+\newcommand{\func}[5]{#1:#2\xrightarrow[#5]{#4}#3}
+\newcommand{\contr}{\rightarrow\leftarrow}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\paren}[1]{\left(#1\right)}
+\newcommand{\mcm}{\text{mcm }}
+\newcommand{\BigO}[1]{O\paren{#1}}
+
+
+\DeclareMathOperator{\Ima}{Im}
+
+\newcounter{sol}[section]
+\newenvironment{sol}[1][]{\refstepcounter{sol}\par\medskip
+\noindent \textbf{Solución problema~\thesol #1:} \rmfamily}{\begin{flushright}
+	$\blacksquare$
+\end{flushright}}
+
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{lem}{Lema}
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem*{cor}{Corolario}
+
+\theoremstyle{definition}
+\newtheorem{prob}{Problema}
+\newtheorem{defn}{Definición}[section]
+\newtheorem{obs}{Observación}[prob]
+\newtheorem{ejm}[obs]{Ejemplo:}
+\newtheorem{eje}{Ejercicio:}
+
