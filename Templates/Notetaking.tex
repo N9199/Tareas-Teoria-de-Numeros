@@ -1,5 +1,6 @@
 \documentclass[12pt,letterpaper]{article}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[spanish]{babel}
 \usepackage[margin=1in]{geometry}
 \usepackage{amsthm, amsmath, amssymb}
@@ -7,6 +8,7 @@
 \usepackage{setspace}\onehalfspacing
 \usepackage[loose,nice]{units}
 \usepackage{enumitem}
+\usepackage{float}
 \usepackage{hyperref}
 \usepackage{color,graphicx}
 \usepackage{fullpage}
@@ -32,16 +34,17 @@
 \newcommand{\abs}[1]{\left|#1\right|}
 \newcommand{\paren}[1]{\left(#1\right)}
 \newcommand{\mcm}{\text{mcm }}
-\newcommand{\BigO}[1]{O\paren{#1}}
+\newcommand{\BigO}[2][]{O_{#1}\paren{#2}}
 \newcommand{\ds}{\displaystyle}
 
 \DeclareMathOperator{\Ima}{Im}
 
 \newcounter{sol}[section]
 \newenvironment{sol}[1][]{\refstepcounter{sol}\par\medskip
-\noindent \textbf{Solución problema~\thesol #1:} \rmfamily}{\begin{flushright}
-	$\blacksquare$
-\end{flushright}}
+	\noindent \textbf{Solución problema~\thesol #1:} \rmfamily}{\begin{flushright}
+		$\blacksquare$
+	\end{flushright}
+}
 
 
 \newtheorem{thm}{Teorema}[section]
