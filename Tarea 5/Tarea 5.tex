@@ -102,7 +102,7 @@
 	por teorema visto en clases,
 	$$A(x) = \frac{1}{\phi(N)} \log (x) + \BigO[N]{1}$$
 	Reescribiendo
-	$$\spadesuit = \ds\sum_{\substack{p \leq x \\ p \equiv a \pmod N}} \frac{1}{p} = \ds\sum_{\substack{p \leq x \\ p \equiv a \pmod N}} \frac{\log p}{p} \cdot \frac{1}{p},$$
+	$$\spadesuit = \ds\sum_{\substack{p \leq x \\ p \equiv a \pmod N}} \frac{1}{p} = \ds\sum_{\substack{p \leq x \\ p \equiv a \pmod N}} \frac{\log p}{p} \cdot \frac{1}{\log p},$$
 	usando sumas por partes, tenemos que
 	$$\spadesuit = A(x) \cdot \frac{1}{\log x} + \int_q^x \frac{A(t)}{t (log t)^2} \d{t},$$
 	donde $q$ es el primer primo tal que $q \equiv A \pmod N$. Desarrollando esta expresión, tenemos
