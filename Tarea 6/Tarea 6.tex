@@ -29,37 +29,51 @@
 \end{flushright}
 
 \begin{prob}[5 pts.]
-    Considere el número real $\alpha=[0,1,\overline{4,8}]$. Muestre que es algebraico y calcule su polinomio minimal.
+	Considere el número real $\alpha=[0,1,\overline{4,8}]$. Muestre que es algebraico y calcule su polinomio minimal.
 \end{prob}
 
 \begin{sol}
-    
+
 \end{sol}
 
 \begin{prob}[5 pts.]
-    Sea $b_1,b_2,...$ una secuencia (infinita) de enteros $b_j\geq1$ para cada $j\geq2$. Considere el número real $\alpha=[b_1,b_2,...]$. Muestre que $DFC(\alpha)=(b_1,b_2,...)$.
+	Sea $b_1,b_2,...$ una secuencia (infinita) de enteros $b_j\geq1$ para cada $j\geq2$. Considere el número real $\alpha=[b_1,b_2,...]$. Muestre que $DFC(\alpha)=(b_1,b_2,...)$.
 \end{prob}
 
 \begin{sol}
-    
+	Sea $DFC(\alpha)=(a_1,a_2,...)$. Lo que queremos demostrar es $a_n=b_n \forall n\in\set{N}$.\\
+	Por inducción:\\
+	$n=1$
+	\[\alpha=b_1+\frac{1}{[b_2,...]}\]
+	Como $[b_2,...]>1$, entonces $\frac{1}{[b_2,...]}<1$
+	\[a_1=\floor{\alpha}=\floor{b_1+\frac{1}{[b_2,..]}}=b_1\]
+	Supongamos que $a_k=b_k\forall k\leq n$, tenemos que demostrar que $b_{n+1}=a_{n+1}$. Sabemos que $DFC(\alpha)=(b_1,b_2,..,b_n,a_{n+1},...)$. Como $\alpha=[DFC(\alpha)_n,\alpha_{n+1}]=[b_1,b_2,...,b_n,\alpha_{n+1}]$
+	\begin{align*}
+		\implies \alpha_{n+1} & =[b_{n+1},b_{n+2},...] \\
+		                      & =b_{n+1}+\frac{1}{[b_{n+2},...]}
+    \end{align*}
+    Como $[b_{n+2},...]>1$ entonces $\frac{1}{[b_{n+2}]}<1$
+    \begin{equation*}
+        a_{n+1}=\floor{\alpha_{n+1}}=b_{n+1}
+    \end{equation*}
 \end{sol}
 
 \begin{prob}[5 pts.]
-    Sea $\alpha\in\set{R}$ irracional. Muestre que para todo $s\geq 2$, los convergentes $\gamma_s$ cumplen
-    \[
-        \abs{\alpha-\gamma_s}<\frac{1}{a_{s+1}\cdot Q_s^2}
-    \]
+	Sea $\alpha\in\set{R}$ irracional. Muestre que para todo $s\geq 2$, los convergentes $\gamma_s$ cumplen
+	\[
+		\abs{\alpha-\gamma_s}<\frac{1}{a_{s+1}\cdot Q_s^2}
+	\]
 \end{prob}
 
 \begin{sol}
-    
+
 \end{sol}
 
 \begin{prob}[5 pts.]
-    Sea $\alpha\in\set{R}$. Suponga que $\alpha$ \textit{no} es de la forma $x+\sqrt{5}y$ con $x,y\in\set{Q}$. Muestre que existen infinitos racionales $p/q\in\set{Q}$ con $\gcd(p,q)=1$ y $q\geq 1$ que cumplen
-    \[
-        \abs{\alpha-\frac{p}{q}}<\frac1{2q^2}
-    \]
+	Sea $\alpha\in\set{R}$. Suponga que $\alpha$ \textit{no} es de la forma $x+\sqrt{5}y$ con $x,y\in\set{Q}$. Muestre que existen infinitos racionales $p/q\in\set{Q}$ con $\gcd(p,q)=1$ y $q\geq 1$ que cumplen
+	\[
+		\abs{\alpha-\frac{p}{q}}<\frac1{2q^2}
+	\]
 \end{prob}
 
 \end{document}
