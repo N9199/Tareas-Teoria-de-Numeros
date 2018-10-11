@@ -49,13 +49,13 @@
 	\[a_1=\floor{\alpha}=\floor{b_1+\frac{1}{[b_2,..]}}=b_1\]
 	Supongamos que $a_k=b_k\forall k\leq n$, tenemos que demostrar que $b_{n+1}=a_{n+1}$. Sabemos que $DFC(\alpha)=(b_1,b_2,..,b_n,a_{n+1},...)$. Como $\alpha=[DFC(\alpha)_n,\alpha_{n+1}]=[b_1,b_2,...,b_n,\alpha_{n+1}]$
 	\begin{align*}
-		\implies \alpha_{n+1} & =[b_{n+1},b_{n+2},...] \\
+		\implies \alpha_{n+1} & =[b_{n+1},b_{n+2},...]           \\
 		                      & =b_{n+1}+\frac{1}{[b_{n+2},...]}
-    \end{align*}
-    Como $[b_{n+2},...]>1$ entonces $\frac{1}{[b_{n+2}]}<1$
-    \begin{equation*}
-        a_{n+1}=\floor{\alpha_{n+1}}=b_{n+1}
-    \end{equation*}
+	\end{align*}
+	Como $[b_{n+2},...]>1$ entonces $\frac{1}{[b_{n+2}]}<1$
+	\begin{equation*}
+		a_{n+1}=\floor{\alpha_{n+1}}=b_{n+1}
+	\end{equation*}
 \end{sol}
 
 \begin{prob}[5 pts.]
@@ -66,7 +66,26 @@
 \end{prob}
 
 \begin{sol}
-
+	Se sabe que $\forall s\geq2$
+	\begin{align*}
+		\gamma_{s+1}-\gamma_s=\frac{(-1)^s}{Q_{s+1}Q_s} \\
+		\abs{\gamma_{s+1}-\gamma_s}=\frac1{Q_{s+1}Q_s}
+	\end{align*}
+	Tenemos además que
+	\begin{equation*}
+		\alpha-\gamma_s=\begin{cases}
+			\leq0 & \text{si $s$ es impar} \\
+			\geq0 & \text{si $s$ es par}
+		\end{cases}
+	\end{equation*}
+	Con lo que podemos ver que
+	\begin{align*}
+		\abs{\alpha-\gamma_s} & \leq\abs{\gamma_{s+1}-\gamma_s}     \\
+		                      & \leq\frac1{Q_{s+1}Q_s}              \\
+		                      & \leq\frac1{(a_{s+1}Q_s+Q_{s-1})Q_s} \\
+		                      & <\frac1{a_{s+1}Q_s^2}
+    \end{align*}
+    Que es lo que queríamos.
 \end{sol}
 
 \begin{prob}[5 pts.]
