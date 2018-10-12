@@ -33,7 +33,24 @@
 \end{prob}
 
 \begin{sol}
-
+	Sea $\alpha = [0, 1, \overline{4, 8}]$. Veamos que $\alpha = [0, 1, \alpha_3]$ con
+	$$\alpha_3 = [4, \overline{8, 4}] = [4, 8, \alpha_5]$$
+	y $\alpha_5 = [4, \overline{8, 4}]$. Es decir, $\alpha_3 = \alpha_5$ \\
+	Luego,
+	$$\alpha_3 = 4 + \frac{1}{8 + \frac{1}{\alpha_3}},$$
+	lo que resulta en la ecuación
+	$$2\alpha_3^2 - 8\alpha_3 - 1 = 0$$
+	Por otro lado, $$\alpha = \frac{1}{1 + \frac{1}{\alpha_3}},$$
+	donde al desarrollar queda
+	$$\alpha = \frac{\alpha_3}{\alpha_3 + 1}.$$
+	Pero $\alpha_3 = \frac{4 \pm 3 \sqrt{2}}{2}$, por lo que
+	$$\alpha = \frac{4 \pm 3 \sqrt{2}}{6 \pm 3 \sqrt{2}}.$$
+	Como $\alpha_3 > 4$, tenemos que
+	$$\alpha = \frac{4 + 3 \sqrt{2}}{6 + 3 \sqrt{2}}.$$
+	Desarrollando esta expresión, llegamos a la ecuación
+	$$9\alpha^2 - 6\alpha - 1 = 0.$$
+	Esta claro que $\alpha$ es algebráico (por contradicción). Basta verificar que $P(\alpha) = \alpha^2 - \frac{2 \alpha}{3} - \frac{1}{9}$ sea su polinomio minimal. Pero sabemos que sus raíces son $$\frac{2/3 \pm \sqrt{89}}{2},$$
+	que no son racionales. Por lo tanto, el polinomio es minimal.
 \end{sol}
 
 \begin{prob}[5 pts.]
@@ -84,8 +101,8 @@
 		                      & \leq\frac1{Q_{s+1}Q_s}              \\
 		                      & \leq\frac1{(a_{s+1}Q_s+Q_{s-1})Q_s} \\
 		                      & <\frac1{a_{s+1}Q_s^2}
-    \end{align*}
-    Que es lo que queríamos.
+	\end{align*}
+	Que es lo que queríamos.
 \end{sol}
 
 \begin{prob}[5 pts.]
@@ -94,5 +111,29 @@
 		\abs{\alpha-\frac{p}{q}}<\frac1{2q^2}
 	\]
 \end{prob}
+
+\begin{sol}
+	Para este problema se usará el siguiente lema
+	\begin{lem}
+		Sea $\frac{a + b\sqrt{5}}{c + d\sqrt{5}}$ con $a, b, c, d \in \mathbb{Q}$ y $c + d\sqrt{5} \not= 0$. Luego,
+		\begin{equation*}
+			\frac{a + b\sqrt{5}}{c + d\sqrt{5}} = \frac{ac - 5bd}{c^2 - 5d^2} + \frac{bc - ad}{c^2 - 5d^2} \sqrt{5}
+		\end{equation*}
+		, donde $\frac{ac - 5bd}{c^2 - 5d^2}$ y $\frac{bc - ad}{c^2 - 5d^2}$ son racionales. Es decir, $\frac{a + b\sqrt{5}}{c + d\sqrt{5}}$ es de la forma $x + y\sqrt{5}$.
+	\end{lem}
+
+	Notar que todo elemento de $\mathbb{Q}$ se puede escribir de la forma $x + y \sqrt{5}$ con $x, y \in \mathbb{Q}$. \\
+	Sea $\alpha \in \mathbb{R} - \mathbb{Q}$, con $\alpha \not= x + y \sqrt{5}, x, y \in \mathbb{Q}$. Por el ejercicio 3 se tiene que $\forall s \geq 2$,
+	$$\left | \alpha - \frac{p_s}{q_s} \right | = | \alpha - \gamma_s| < \frac{1}{a_{s+1} \cdot q_s^2}$$
+	Notar que si $a_{s+1} \geq 2$, entonces
+	$$\frac{1}{a_{s+1} \cdot q_s^2} \geq \frac{1}{2 \cdot q_s^2}$$
+	Como $\alpha \not\in \mathbb{Q}$, el largo de $DFC(\alpha) = \infty$, por lo que existen infinitos $a_i$, con $a_i \not= 0$ para $i \geq 2$. Notar que $\forall s \geq 2, q_s \geq 1$ y $(p_s, q_s) = 1$ \\
+	Luego, si $\alpha$ en su desarrollo de fracción continua tiene infinitos $a_i \geq 2$, tenemos infinitos $p_{i-1}, q_{i-1}$ que cumplen lo pedido. \\
+	Ahora, si $\alpha$ solo tiene finitos $a_i \geq 2$ en su desarrollo de fracción continua, entonces $\exists k_0 \in \mathbb{N}$ tal que $\forall k \geq k_0$, $a_k = 1$. Es decir, $\alpha = [a_1, a_2, a_3, \cdots, a_{k_0 - 1}, a_{k_0}]$ con $a_{k_0} = [1, \overline{1}]$. \\
+	Pero ya sabemos que $aa_{k_0} = \phi = \frac{1 + \sqrt{5}}{2}$ (visto en clases). \\
+	Luego,
+	$$\alpha = a_1 + + \frac{1}{a_2 + \frac{1}{\ddots + \frac{1}{a_{k_0} + \frac{1}{\phi}}}}$$
+	Y usando el Lema 1, y repitiendo el proceso, se concluye lo pedido.
+\end{sol}
 
 \end{document}
