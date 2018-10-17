@@ -77,7 +77,23 @@
 \end{prob}
 
 \begin{sol}
-
+	Recordamos que la suma de los primeros $n$ naturales tiene la siguiente formula:
+	\[
+		\frac{n(n+1)}2
+	\]
+	Nosotros queremos que esta expresión sea un cuadrado, y notamos que si escribimos $n$ y $n+1$ de la siguiente forma tenemos que la expresión anterior es un cuadrado
+	\[
+		n=2t^2\quad(n+1)=s^2
+	\]
+	Juntando ambas cosas se consigue lo siguiente:
+	\[
+		s^2-2t^2=1
+	\]
+	Lo cuál es una ecuación de Pell, por el problema 2, sabemos que si la ecuación tiene una solución no trivial entonces tiene infinitas.
+	\[
+		(3,2)\rightarrow 3^2-2\cdot2^2=1
+	\]
+	Por lo que tenemos lo pedido. Vemos que $(3,2)\rightarrow n=8$, la siguiente $(17,12)\rightarrow n=288$, la subsiguiente es $(99,70)\rightarrow n=9800$, y la subsubsiguiente $(577,408)\rightarrow n=332928$, donde cada $n$ cumple lo pedido.
 \end{sol}
 
 \begin{prob}[3 pts]
@@ -87,7 +103,19 @@
 \end{prob}
 
 \begin{sol}
-
+	El problema se puede reescribir de la siguiente forma:
+	\[
+		a\cdot b=\frac{b(b+1)}2-\frac{a(a-1)}2
+	\]
+	Donde hay que encontrar infinitos $(a,b)\in\set{Z}^2$ con $a<b$, tal que sean solución. Por la última condición se puede ver lo siguiente $b=a+c$, con $c\in\set{N}$, usando esto para reescribir la ecuación se tiene que
+	\[
+		2a^2-2a=c^2+c
+	\]
+	Completando cuadrados y multiplicando por $4$
+	\[
+		(2c+1)^2-2(2a-1)^2=-1
+	\]
+	Luego recordamos el problema 2 y tomamos la siguiente solución $(a,c)=(1,0)\rightarrow a=b=1$, por lo que hay infinitas soluciones para la ecuación, lo que nos da infinitos $a,b$ que cumplen lo pedido. Ahora tomamos $(3,3)\rightarrow a=3, b=6$, y $(20,15)\rightarrow a=20, b=35$.
 \end{sol}
 
 \end{document}
