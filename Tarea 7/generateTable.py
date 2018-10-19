@@ -54,35 +54,22 @@ def table(d):
         diff[i] = P[i]*P[i]-d*Q[i]*Q[i]
 
     s = "\\begin{tabular}"
-    s += "{| l |"
-    for i in range(2*p+1):
-        s += "| r "
-    s += "|}\n\hline\n"
+    s += "{| l | r | r | r |}\n\hline\n"
 
-    s += "$a_s$ & $*$ "
-    for i in range(1, 2*p+1):
-        s += "& $a_{}$".format(i)
-    s += "\\\\\n\hline\n"
-    
-    s += "$P_s$ "
-    for i in range(2*p+1):
-        s += "& {}".format(P[i])
-    s += "\\\\\n\hline\n"
+    s += "$a_s$ & $P_s$ & $Q_s$ & Diff\\\\\n\hline\hline\n"
 
-    s += "$Q_s$ "
     for i in range(2*p+1):
-        s += "& {}".format(Q[i])
-    s += "\\\\\n\hline\n"
+        if i == 0:
+            s += "$*$ & {} & {} & {}".format(P[i], Q[i], diff[i])
+        else:
+            s += "{} & {} & {} & {}".format(a[i], P[i], Q[i], diff[i])
 
-    s += "Diff "
-    for i in range(2*p+1):
-        s += "& {}".format(diff[i])
-    s += "\\\\\n\hline\n"
+        s += "\\\\\n\hline\n"
 
     s += "\end{tabular}\n"
     return s
 
 
-d = 60
+d = 61
 
 print(table(d))
