@@ -162,7 +162,7 @@
 
 		\item Muestre que si \eqref{eq1} tiene alguna solución entera $(a,b)$, entonces tiene infinitas. Más precisamente, muestre que la clase de P-equivalencia de $(a,b)$ en las soluciones enteras de \eqref{eq1} es exactamente
 		      \[
-			      \{(p,q)\in\set{Z}^2: p+q\sqrt{d}=\paren{s+\sqrt{d}t}\paren{a+\sqrt{d}b}\text{para algún }(s,t)\in\mathcal{P}_d\set{Z}\}
+			      \{(p,q)\in\set{Z}^2: p+q\sqrt{d}=\paren{s+\sqrt{d}t}\paren{a+\sqrt{d}b}\text{para algún }(s,t)\in\mathcal{P}_d(\set{Z})\}
 		      \]
 		      y ese conjunto es infinito.
 
@@ -175,14 +175,16 @@
 \begin{sol}
 	\begin{enumerate}[label = (\roman*)]
 		\item \underline{Refleja:} Notar que $(1, 0) \in \mathcal{P}_d(\set{Z})$, por lo que $\forall (a_1, b_1) \in Q$ tenemos que
-		      $$a_1 + b_1\sqrt{d} = (1 + 0\sqrt{d})(a_1 + b_1 \sqrt{d}).$$
+		      \[a_1 + b_1\sqrt{d} = (1 + 0\sqrt{d})(a_1 + b_1 \sqrt{d}).\]
 
 		      \underline{Simétrica:} Sean $(a_1, b_1)$ y $(a_2, b_2) \in Q$, $(s, t) \in \mathcal{P}_d(\mathbb{Z})$, tal que
-		      $$a_2 + b_2\sqrt{d} = (s + t\sqrt{d})(a_1 + b_1\sqrt{d}),$$
+		      \[a_2 + b_2\sqrt{d} = (s + t\sqrt{d})(a_1 + b_1\sqrt{d}),\]
 		      lo que pasa si y solo si
-		      $$a_2 + b_2\sqrt{d} \cdot \frac{1}{(s + t\sqrt{d})} = (a_1 + b_1\sqrt{d})$$
+		      \[a_2 + b_2\sqrt{d} \cdot \frac{1}{(s + t\sqrt{d})} = (a_1 + b_1\sqrt{d})\]
 		      Racionalizando $\frac{1}{(s + t\sqrt{d})}$ (y usando el hecho que $(s, t)$ es solución), llegamos a que lo anterior pasa si y solo si
-		      $$(a_2 + b_2 \sqrt{d})(s - t \sqrt{d}) = (a_1 + b_1 \sqrt{d}),$$
+		      \[
+			      (a_2 + b_2 \sqrt{d})(s - t \sqrt{d}) = (a_1 + b_1 \sqrt{d})
+		      \]
 		      y claramente $(s, -t) \in \mathcal{P}_d (\mathbb{Z})$. \\
 
 		      \underline{Transitiva:} Sean $(a_1, b_1), (a_2, b_2), (a_3, b_3) \in Q$ y $(s_1, t_1), (s_2, t_2) \in \mathcal{P}_d (\mathbb{Z})$, tal que
@@ -200,18 +202,24 @@
 		      Por lo tanto, se tiene lo pedido.
 
 		\item Supongamos que tiene soluciones enteras. Sea $(a, b)$ una solución. Luego,
-		      $$a^2 - 5b^2 = 2.$$
-			  Aplicando $\pmod{5}$ queda $a^2 \equiv 2 \pmod{5}$, pero 2 no es un cuadrado $\pmod{5}$, $\contr$.
-		\item
-		\item
-		\item Notar que $(7, 3)$ y $(3, 1)$ son soluciones. Supongamos que están relacionadas. Luego, 
-		$$7 + 3\sqrt{5} = (3 + \sqrt{5})\underbrace{(5 + t\sqrt{5})}_{\in \mathcal{P}_5 (\mathbb{Z})}.$$
-		Desde aquí se tiene $7 + 3\sqrt{5} = (15 + 5t) + \sqrt{5}(3t + 5)$.
-		Esto implica que \begin{itemize}
-		\item $15 + 5t = 7 \Rightarrow 0 \equiv 2 \pmod 5$, $\contr$ \\
-		\item $3t + 5 = 3 \Rightarrow 2 \equiv 0 \pmod 3$, $\contr$
-		\end{itemize}
-		Así, $[(7, 3)] \not= [(3, 1)]$.	  
+		      \[a^2 - 5b^2 = 2.\]
+		      Aplicando $\pmod{5}$ queda $a^2 \equiv 2 \pmod{5}$, pero 2 no es un cuadrado $\pmod{5}$, $\contr$.
+		\item Dado $(a,b)$ solución, notamos que por lo demostrado en $(I)$ el conjunto dado tiene que ser subconjunto de la clase de equivalencia. Ahora sea, $(x,y)$ un elemento de la clase de equivalencia, entonces existe $(s,t)\in\mathcal{P}_d(\set{Z})$, tal que $(x+y\sqrt{d})=(s+t\sqrt{d})(a+b\sqrt{d})$, por lo que la clase esta contenida en el conjunto. Ahora recordamos que si $(s,t)$ es una solución no trivial $(1,0)$, se tendrá que $(s,t)$ operado consigo mismo será una solución nueva de $x^2-dy^2=1$
+		      \begin{align*}
+			      (s+t\sqrt{d})^2                 & = s^2+t^2d+2st\sqrt{d} \\
+			      \therefore(s^2+t^2d)^2-d(2st)^2 & = (s^2-t^2d)^2         \\
+			                                      & = 1^2 = 1
+		      \end{align*}
+		      Y como $s^2+t^2d > s$ si $t\neq0$, y $2st\neq t$, ya que $t\neq 0$ y $s\in\set{Z}$. Con esto notamos que si tomamos $(a,b)$ y lo operamos con $(s,t)$ operado consigo mismo $n$ veces, se garantiza que es una solución distinta.
+
+		\item Notar que $(7, 3)$ y $(3, 1)$ son soluciones. Supongamos que están relacionadas. Luego,
+		      \[7 + 3\sqrt{5} = (3 + \sqrt{5})\underbrace{(5 + t\sqrt{5})}_{\in \mathcal{P}_5 (\mathbb{Z})}.\]
+		      Desde aquí se tiene $7 + 3\sqrt{5} = (15 + 5t) + \sqrt{5}(3t + 5)$.
+		      Esto implica que \begin{itemize}
+			      \item $15 + 5t = 7 \Rightarrow 0 \equiv 2 \pmod 5$, $\contr$
+			      \item $3t + 5 = 3 \Rightarrow 2 \equiv 0 \pmod 3$, $\contr$
+		      \end{itemize}
+		      Así, $[(7, 3)] \not= [(3, 1)]$.
 	\end{enumerate}
 \end{sol}
 
