@@ -4,13 +4,10 @@ from fractions import Fraction
 
 
 class CFraction(list):
-    """
-    A continued fraction, represented as a list of integer terms.
-    """
 
     def __init__(self, value, maxterms=15, cutoff=1e-10):
-        remainder = floor(sqrt(value))
         d = value
+        # Calculo de la fracción continúa de una raíz
         self.period = None
         a = True
         P = [0]
@@ -27,12 +24,14 @@ class CFraction(list):
                 if self[-i:] == self[1:-i]:
                     self.period = i
                     a = False
+        # Check de la fracción continúa
         print(self)
 
     def __str__(self):
         return "[%s]" % ", ".join([str(x) for x in self])
 
 
+# Generador de la tabla
 def table(d):
     a = CFraction(d, maxterms=50)
     p = a.period
@@ -62,7 +61,7 @@ def table(d):
         if i == 0:
             s += "$*$ & {} & {} & {}".format(P[i], Q[i], diff[i])
         else:
-            s += "{} & {} & {} & {}".format(a[i], P[i], Q[i], diff[i])
+            s += "{} & {} & {} & {}".format(a[i-1], P[i], Q[i], diff[i])
 
         s += "\\\\\n\hline\n"
 
@@ -70,6 +69,18 @@ def table(d):
     return s
 
 
-d = 61
+# Función para encontrar los primeros 5 cuadrados del Problema 3
+def first_5_squares():
+    c = 0
+    n = 1
+    while c < 5:
+        if int(sqrt(n*(n+1)/2))*int(sqrt(n*(n+1)/2)) == n*(n+1)/2:
+            print(n)
+            c += 1
+        n += 1
+
+
+d = 62
 
 print(table(d))
+first_5_squares()
