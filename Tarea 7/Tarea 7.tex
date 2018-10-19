@@ -173,7 +173,7 @@
 \end{prob}
 
 \begin{sol}
-	\begin{enumerate}
+	\begin{enumerate}[label = (\roman*)]
 		\item \underline{Refleja:} Notar que $(1, 0) \in \mathcal{P}_d(\set{Z})$, por lo que $\forall (a_1, b_1) \in Q$ tenemos que
 		      $$a_1 + b_1\sqrt{d} = (1 + 0\sqrt{d})(a_1 + b_1 \sqrt{d}).$$
 
@@ -201,7 +201,17 @@
 
 		\item Supongamos que tiene soluciones enteras. Sea $(a, b)$ una solución. Luego,
 		      $$a^2 - 5b^2 = 2.$$
-		      Aplicando $\pmod{5}$ queda $a^2 \equiv 2 \pmod{5}$, pero 2 no es un cuadrado $\pmod{5}$, $\contr$.
+			  Aplicando $\pmod{5}$ queda $a^2 \equiv 2 \pmod{5}$, pero 2 no es un cuadrado $\pmod{5}$, $\contr$.
+		\item
+		\item
+		\item Notar que $(7, 3)$ y $(3, 1)$ son soluciones. Supongamos que están relacionadas. Luego, 
+		$$7 + 3\sqrt{5} = (3 + \sqrt{5})\underbrace{(5 + t\sqrt{5})}_{\in \mathcal{P}_5 (\mathbb{Z})}.$$
+		Desde aquí se tiene $7 + 3\sqrt{5} = (15 + 5t) + \sqrt{5}(3t + 5)$.
+		Esto implica que \begin{itemize}
+		\item $15 + 5t = 7 \Rightarrow 0 \equiv 2 \pmod 5$, $\contr$ \\
+		\item $3t + 5 = 3 \Rightarrow 2 \equiv 0 \pmod 3$, $\contr$
+		\end{itemize}
+		Así, $[(7, 3)] \not= [(3, 1)]$.	  
 	\end{enumerate}
 \end{sol}
 
@@ -250,7 +260,7 @@
 	\[
 		(2c+1)^2-2(2a-1)^2=-1
 	\]
-	Luego recordamos el problema 2 y tomamos la siguiente solución $(a,c)=(1,0)\rightarrow a=b=1$, por lo que hay infinitas soluciones para la ecuación, lo que nos da infinitos $a,b$ que cumplen lo pedido. Ahora tomamos $(3,3)\rightarrow a=3, b=6$, y $(20,15)\rightarrow a=20, b=35$.
+	Luego recordamos el problema 2 y tomamos la siguiente solución $(a,c)=(1,0)\rightarrow a=b=1$, por lo que hay infinitas soluciones para la ecuación, lo que nos da infinitos $a,b$ que cumplen lo pedido. Ahora tomamos $(20,15)\rightarrow a=20, b=35$, $(119,85)\rightarrow a=85, b=204$ y $(696,493)\rightarrow a=493, b=1189$.
 \end{sol}
 
 \bibliographystyle{unsrt}
