@@ -173,7 +173,36 @@
 \end{prob}
 
 \begin{sol}
+	\begin{enumerate}
+		\item \underline{Refleja:} Notar que $(1, 0) \in \mathcal{P}_d(\set{Z})$, por lo que $\forall (a_1, b_1) \in Q$ tenemos que
+		      $$a_1 + b_1\sqrt{d} = (1 + 0\sqrt{d})(a_1 + b_1 \sqrt{d}).$$
 
+		      \underline{Simétrica:} Sean $(a_1, b_1)$ y $(a_2, b_2) \in Q$, $(s, t) \in \mathcal{P}_d(\mathbb{Z})$, tal que
+		      $$a_2 + b_2\sqrt{d} = (s + t\sqrt{d})(a_1 + b_1\sqrt{d}),$$
+		      lo que pasa si y solo si
+		      $$a_2 + b_2\sqrt{d} \cdot \frac{1}{(s + t\sqrt{d})} = (a_1 + b_1\sqrt{d})$$
+		      Racionalizando $\frac{1}{(s + t\sqrt{d})}$ (y usando el hecho que $(s, t)$ es solución), llegamos a que lo anterior pasa si y solo si
+		      $$(a_2 + b_2 \sqrt{d})(s - t \sqrt{d}) = (a_1 + b_1 \sqrt{d}),$$
+		      y claramente $(s, -t) \in \mathcal{P}_d (\mathbb{Z})$. \\
+
+		      \underline{Transitiva:} Sean $(a_1, b_1), (a_2, b_2), (a_3, b_3) \in Q$ y $(s_1, t_1), (s_2, t_2) \in \mathcal{P}_d (\mathbb{Z})$, tal que
+		      $a_2 + b_2\sqrt{d} = (s_1 + t_1\sqrt{d})(a_1 + b_1\sqrt{d})$ y $a_3 + b_3\sqrt{d} = (s_2 + t_2\sqrt{d})(a_2 + b_2\sqrt{d})$. Esto dice que
+		      \begin{align*}
+			      a_3 + b_3\sqrt{d} & = (s_2 + t_2\sqrt{d})(s_1 + t_1\sqrt{d})(a_1 + b_1\sqrt{d})         \\
+			                        & = (s_2s_1 + dt_2t_1 + (t_2s_1 + s_2t_1)\sqrt{d})(a_1 + b_1\sqrt{d})
+		      \end{align*}
+		      Veamos que $(s_2s_1 + dt_2t_1, t_2s_1 + s_2t_1) \in \mathcal{P}_d (\mathbb{Z})$
+		      \begin{align*}
+			      (s_2s_1 + dt_2t_1)^2 - d(t_2s_1 + s_2t_1)^2 & = (s_2s_1)^2+ 2ds_1s_2t_1t_2 + (dt_2t_1)^2 - d(t_2s_1)^2 -2ds_1s_2t_1t_2 - (s_2t_1)^2 \\
+			                                                  & = s_1(s_2^2 - dt_2^2) + dt_1^2(dt_2^2 - s_2^2)                                        \\
+			                                                  & = s_1^2 - dt_1^2 = 1
+		      \end{align*}
+		      Por lo tanto, se tiene lo pedido.
+
+		\item Supongamos que tiene soluciones enteras. Sea $(a, b)$ una solución. Luego,
+		      $$a^2 - 5b^2 = 2.$$
+		      Aplicando $\pmod{5}$ queda $a^2 \equiv 2 \pmod{5}$, pero 2 no es un cuadrado $\pmod{5}$, $\contr$.
+	\end{enumerate}
 \end{sol}
 
 \begin{prob}[3 pts.]
