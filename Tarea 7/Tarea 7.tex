@@ -212,6 +212,13 @@
 		      \end{align*}
 		      Y como $s^2+t^2d > s$ si $t\neq0$, y $2st\neq t$, ya que $t\neq 0$ y $s\in\set{Z}$. Con esto notamos que si tomamos $(a,b)$ y lo operamos con $(s,t)$ operado consigo mismo $n$ veces, se garantiza que es una solución distinta.
 
+		\item Sea $G$ el conjunto de las soluciones de $x^2-dy^2=1$ con la operación $(a,b)*(c,e)=(ac+bed,ae+bc)$, queremos ver que esto es un grupo.
+		\[
+			(ac+bed)^2-d(ae+bc)^2=(a^2 - b^2 d) (x^2 - d y^2)=1\cdot 1=1
+		\]
+		Notamos que $(1,0)$ es el neutro, sea $(a,b)\in G$, veamos que $(a,b)*(a,-b)=(a^2-d*b^2,ab-ab)=(1,0)$, solo nos falta la asociatividad, pero notamos que esta operación es la multiplición de elementos del anillo $\set{Z}[\sqrt{d}]$, por lo que es asociativa.\\
+		Ahora sea $H$ el conjunto de soluciones de $x^2-dy^2=k$
+		
 		\item Notar que $(7, 3)$ y $(3, 1)$ son soluciones. Supongamos que están relacionadas. Luego,
 		      \[7 + 3\sqrt{5} = (3 + \sqrt{5})\underbrace{(5 + t\sqrt{5})}_{\in \mathcal{P}_5 (\mathbb{Z})}.\]
 		      Desde aquí se tiene $7 + 3\sqrt{5} = (15 + 5t) + \sqrt{5}(3t + 5)$.
