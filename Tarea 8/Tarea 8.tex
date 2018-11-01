@@ -29,17 +29,32 @@
 \end{flushright}
 
 \begin{prob}[20 pts.]
-    Encuentre alguna solución en enteros positivos para la siguiente ecuación
-    \[
-        \frac{x}{y+z}+\frac{y}{x+z}+\frac{z}{x+y}=6
-    \]
+	Encuentre alguna solución en enteros positivos para la siguiente ecuación
+	\[
+		\frac{x}{y+z}+\frac{y}{x+z}+\frac{z}{x+y}=6
+	\]
 \end{prob}
 
 \begin{sol}
-    \citep{quora}
-    \citep{paper}
-    \citep{prog}
+	Notemos que si $(a, b, c)$ es solución de la igualdad, entonces $(ta, tb, tc)$ es solución de la igualdad, con $t \in \mathbb{R} \setminus \{0\}$, pues
+	$$\frac{ta}{tb + tc} + \frac{tb}{ta + tc} + \frac{tc}{ta + tb} = \frac{a}{b + c} + \frac{b}{a + c} + \frac{c}{a + b} = 6$$.
+	Sea $s = a + b + c$. Entonces aplicamos el siguiente cambio de variable\citep{paper}:
+	\begin{align*}
+		\frac{a}{s} & = \frac{72 - x + y}{18(4 - x)} \\
+		\frac{b}{s} & = \frac{72 - x - y}{18(4 - x)} \\
+		\frac{c}{s} & = \frac{-36 - 5x}{9(4 - x)}
+	\end{align*}
+	Por la homogeneidad demostrada inicialmente, podemos tomar $s = 1$. Luego, al reemplazar en la ecuación original, después de realizar cálculos formales tenemos la siguiente curva:
+	$$C := y^2 = x^3 + 213x^2 + 288x \mbox{ En el proyectivo}$$
+	Notar que si existen $(x, y)$ solución con $x, y \in \mathbb{Q}$, entonces $a, b, c \in \mathbb{Q}$ (ya que el cambio de variables es un mapeo birracional). Por otra parte, por la homogeneidad del principio si existen soluciones en $\mathbb{Q}$, también existen en $\mathbb{Z}$. Así, solo basta encontrar $(x, y)$ en $\mathbb{Q}$ tal que $a, b, c > 0$. \\
+	Sabemos que $P = (-8, 104)$ pertenece a $C$. Sin embargo, da el trio $(23, -3,7)$, donde no todas las soluciones son positivas. Usando la operación definida en la curva elíptica,\citep{pasten} llegamos a $2P$, que tiene coordenadas racionales (ya que $C$ y $P$ las tienen), pero nos da el trio $(26304, 12605, -24869)$, donde no son todas positivas. \\
+	Repitiendo el proceso (operar $nP$ y $P$)\citep{quora} hasta llegar a lo que queremos (usando el programa)\citep{prog}, vemos que $11P$ es solución. Dandonos el punto que se puede ver en el programa\footnote{El número tiene 134 dígitos, por ende creemos que es mejor no ponerlo, pero si esta presente el código}
+
 \end{sol}
+
+\newpage
+\section*{Explicación del código}
+El programa en Sage toma la curva elíptica en la forma de Weierstrass, y nos deja operar naturalmente los puntos dentro de la curva, además podemos mapear a las soluciones de la ecuación inicial automáticamente. Dado esto, el programa toma un punto $(-8,104)$ y después lo opera consigo mismo hasta que se cumpla la condición de que la solución de la ecuación diofantina asociada sean valores positivos, después esta solución se normaliza (Se multiplica por un $t$ conveniente), y se tiene el resultado pedido.
 
 \bibliographystyle{apacite}
 \bibliography{Tarea}
