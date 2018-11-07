@@ -1,0 +1,138 @@
+\input{../Templates/Notetaking}
+
+\begin{document}
+\begin{minipage}{2.5cm}
+	\includegraphics[width=2cm]{../figures/logo1.jpg}
+\end{minipage}
+\begin{minipage}{13cm}
+	\begin{flushleft}
+		\raggedright
+		{
+			\noindent
+			{\sc Pontificia Universidad Católica de Chile\\
+				Facultad de Matemáticas\\
+				Departamento de Matemática} \smallskip \\
+			Segundo Semestre de 2018\\
+		}
+	\end{flushleft}
+\end{minipage}
+
+\vspace{2ex}
+{\Large \centerline{\bf Tarea 9}}
+{\large \centerline{Teoría de Números - MAT 2225}}
+\centerline{Fecha de Entrega: 2018/11/06}
+
+\begin{flushright}
+	Integrantes del grupo:\\
+	Nicholas Mc-Donnell, Camilo Sánchez\\
+	Felipe Guzmán, Fernanda Cares
+\end{flushright}
+
+\begin{prob}[2 pts. c/u]
+	Los siguientes $f\in\set{C}[y_1,y_2]$ determinan un conjunto algebraico $X=\set{V}(f)$ en la carta afín $U_0\simeq\set{A}^2$ de $\set{P}^2$. En cada caso, calcule los puntos al infinito de la clausura proyectiva de $X$:
+	\begin{enumerate}
+		\item $y_1^3-y_2^3$
+		\item $y_1^2y_2-2y_1y_1^2+y_1y_2-3$
+		\item $y_1^n+y_2^n+1$ con $n$ entero positivo
+	\end{enumerate}
+\end{prob}
+
+\begin{sol}
+	\begin{enumerate}
+		\item  $H = x_1^3 - x_2^2 x_0$ homogeneización de $f$. Luego, $\mathbb{V}_{u_0} (f) = \mathbb{V}_{\mathbb{p}2} (H)$. Queremos puntos en  $\mathbb{V}_{\mathbb{p}2} (H) \backslash \mathbb{V} (f)$. \\
+		      Como vemos $\mathbb{V} (f)$ en $u_0 \rightarrow$ tomemos $p = [0:a:b] \not\in u_0$.  \\
+		      Además, $a^3 - b^2 \cdot 0 = 0 \Rightarrow a = 0$. Luego, $[0:0:1]$ es punto al infinito de la clausura.
+
+		\item $H = x_1^2 x_2 - 2 x_1 x_2^2 + x_1x_2x_0 - 3x_0^3$. Tomemos $p = [0: a: b] \not\in u_0$, $p \in H$. Luego,
+		      \[a^2b - 2ab^2 +0 - 0 = 0 \Rightarrow ab(a - 2b^2) = 0.\]
+		      Si $a = 0$, tenemos que $p_1 = [0:0:1]$ es punto al infinito. Análogamente, $p_2 = [0:1:0]$ es punto al infinito. Si $a - 2b = 0$, entonces $a = 2b$. Luego, $p_3 = [0:2:1]$ es un punto al infinito. \\
+		      Con esto, tenemos que $p_1, p_2$ y $p_3$ son todos los puntos al infinito. \\
+		\item  $H = x_1^2 + x_2^n + x_0^n = 0$. Tomemos $p = [0:a:b]$ con $p \in H$. Luego, $a^n + b^n$ = 0. Si $a = 0$, entonces $b = 0$, pero $[0:0:0] \notin \mathbb{P}^3$, \nope. Análogamente, $b = 0$ no nos da puntos. \\
+		      Si $a, b \not= 0$, entonces $p = [0:1:c]$ implica que $c^n = -1$. Si $n$ es par, no hay puntos. Si $n$ es impar, entonces tenemos $C_n = -\cis(2\pi n/k)$, con $k \in \{0, \cdots, n-1\}$. Luego, tenemos $p_n = [0:1:C_n]$ puntos al infinito.
+	\end{enumerate}
+\end{sol}
+
+\begin{prob}[3 pts. c/u]
+	Sea $0\neq f\in\set{C}[x_0,x_1,x_2]$ un polinomio homogéneo de grado $m\geq1$.
+	\begin{enumerate}
+		\item Muestre que
+		      \[x_0\frac{\partial f}{\partial x_0}+x_1\frac{\partial f}{\partial x_1}+x_2\frac{\partial f}{\partial x_2}=m\cdot f\]
+		\item Muestre que si las tres derivadas parciales de $f$ no tienen ceros comunes en $\set{P}^2$ entonces $\set{V}(f)\subseteq\set{P}^2$ es suave.
+	\end{enumerate}
+\end{prob}
+
+\begin{sol}
+	\begin{enumerate}
+		\item Tenemos que
+		      $$f = \ds\sum_{\substack{i, j, k \geq 0 \\ i + j + k = m}} \alpha_{i, j, k} x_0^i x_1^jx_2^k$$
+		      Luego, tenemos que $\frac{\partial f}{\partial x_0} + \frac{\partial f}{\partial x_1} + \frac{\partial f}{\partial x_2}$ es igual a
+		      \begin{align*}
+			        & x_0 \ds\sum i \cdot \alpha_{i, j, k} x_0^{i-1} x_1^jx_2^k + x_1 \ds\sum j \cdot \alpha_{i, j, k} x_0^i x_1^{j-1} x_2^k + \ds\sum k \cdot \alpha_{i, j, k} x_0^i x_1^j x_2^{k-1} \\
+			      = & \ds\sum i \cdot \alpha_{i, j, k} x_0^i x_1^jx_2^k + \ds\sum j \cdot \alpha_{i, j, k} x_0^i x_1^jx_2^k + \ds\sum k \cdot \alpha_{i, j, k} x_0^i x_1^jx_2^k                       \\
+			      = & \ds\sum (i+j+k) \cdot \alpha_{i, j, k} x_0^i x_1^jx_2^k                                                                                                                         \\
+			      = & m \cdot f,
+		      \end{align*}
+		      que es lo que se quería demostrar.
+
+		\item Intersectaremos con $u_0, u_1$ y $u_2$ y veremos que define curvas afines suaves. \\
+		      Viendo $\mathbb{V}(f) \backslash u_0$, tenemos que $f_1(x, y) = f(x_0, x_1, x_2)$ con $(x_0, x_1, x_2) = (1, x, y).$ Luego,
+		      $$\frac{\partial f_1}{\partial x}(x, y) = \frac{\partial f}{\partial x_0}(1, x, y) \cdot \underbrace{\frac{\partial x_0}{\partial x}}_{0} + \frac{\partial f}{\partial x_1}(1, x, y) \cdot \underbrace{\frac{\partial x_1}{\partial x}}_{1} + \frac{\partial f}{\partial x_2}(1, x, y) \cdot \underbrace{\frac{\partial x_2}{\partial x}}_{0} = \frac{\partial f}{\partial x_1}(1, x, y)$$
+		      Análogamente, $\frac{\partial f_1}{\partial y}(x, y) = \frac{\partial f}{\partial x_2}(1, x, y)$. Supongamos que $(a, b)$ es cero común. Luego,
+		      \begin{align*}
+			      \frac{\partial f_1}{\partial x} (a, b) = 0 &  & \Rightarrow &  & \frac{\partial f}{\partial x_1} (1, a, b) = 0 \\
+			      \frac{\partial f_1}{\partial y} (a, b) = 0 &  & \Rightarrow &  & \frac{\partial f}{\partial x_2} (1, a, b) = 0 \\
+			      f_1 (a, b) = 0                             &  & \Rightarrow &  & f (1, a, b) = 0
+		      \end{align*}
+		      Por la parte i), tenemos que
+		      $$1 \cdot \frac{\partial f}{\partial x_0}(1, a, b) + a \cdot \underbrace{\frac{\partial f}{\partial x_1}(1, a, b)}_{0} + b \cdot \underbrace{\frac{\partial f}{\partial x_2}(1, a, b)}_{0} = m \cdot \underbrace{f(1, a, b)}_{0}$$
+		      Luego, $\frac{\partial f}{\partial x_0} f(1, a, b) = 0$. Luego, $(1, a, b)$ es un cero común de las tres derivadas parciales, \nope. \\
+		      Así, no hay ceros comunes y $\mathbb{V}(f) \cap u_0$ es curva afín suave.
+	\end{enumerate}
+\end{sol}
+
+\begin{prob}[2 pts. c/u]
+	Dado un entero positivo $n$, la \textit{curva de Fermat} $X_n\subseteq\set{P}^2$ es la curva plana proyectiva definida por el polinomio homogéneo
+	\[x_0^n+y_0^n+z_0^n\]
+	\begin{enumerate}
+		\item Muestre que $X_N$ es suave chequeando que su intersección con las cartas afines $U_0,U_1,U_2$ define curvas afines suaves.
+		\item Muestre que $X_n$ es suave chequeando directamente en $\set{P}^2$, usando el Problema 2.
+	\end{enumerate}
+\end{prob}
+
+\begin{sol}
+	\begin{enumerate}
+		\item Tenemos $x_0^n + y_0^n + z_0^n = X$, $n \not= 0$. \\
+		      $X \cap U_0$: Tenemos que $1 + \alpha^n + \beta^n = 0, n \cdot \alpha^{n-1} = n \cdot \beta^{n-1} = 0$. Esto implica que $\alpha = \beta = 0$, pero en este caso $1 + \alpha^n + \beta^n = 1$, \nope. \\
+		      $X \cap U_1$: Tenemos que $\alpha^n + 1 + \beta^n = 0, n \cdot \alpha^{n-1} = n \cdot \beta^{n-1} = 0$. Esto implica que $\alpha = \beta = 0$, pero en este caso $\alpha^n + 1 + \beta^n = 1$, \nope. \\
+		      $X \cap U_2$: Tenemos que $\alpha^n + \beta^n + 1 = 0, n \cdot \alpha^{n-1} = n \cdot \beta^{n-1} = 0$. Esto implica que $\alpha = \beta = 0$, pero en este caso $\alpha^n + \beta^n + 1 = 1$, \nope. \\
+		      Así, se tiene lo pedido.
+
+		\item Por la pregunta 2, basta que las derivadas parciales no tengan ceros comunes en $\mathbb{P}^2$. Si $n = 1$, entonces la derivada parcial da $1 \not= 0$, por lo que no hay ceros comunes. Si $n > 1$, entonces la derivada parcial en la primera variable da $n \cdot x_0^{n-1}$. Luego, para que sea 0, $x_0 = 0$. Análogamente, $y_0 = z_0 = 0$. Pero $[0:0:0] \not\in \mathbb{P}^3$, \nope. \\
+		      Por lo tanto, no hay ceros comunes y la curva es suave.
+	\end{enumerate}
+\end{sol}
+
+\begin{prob}[4 pts.]
+	Sean $A,B\in\set{C}$. Considere la curva plana afín dada por
+	\[y^2=x^3+Ax+B\]
+	Sea $X\subseteq\set{P}^2$ su clausura proyectiva (considerando la curva afín en $U_0\subseteq\set{P}^2$). Demuestre que si $4A^3+27B^2\neq0$ entonces $X$ es suave.
+\end{prob}
+
+\begin{sol}
+	Por teorema de clases, $\overline{\mathbb{V}_{U_0} (f)} = \mathbb{V}_{\mathbb{P}_2} (H)$, donde $H = -x_2^2x_0 + x_1^3 + Ax_1x_0^2 + Bx_0^3$. Por la pregunta 2, basta buscar ceros comunes: \begin{align}
+		\frac{\partial f}{\partial x_0} & = -x_2^2 + 2Ax_1x_0 + 3Bx_0^2 \\
+		\frac{\partial f}{\partial x_1} & = 3x_1^2 + Ax_0^2             \\
+		\frac{\partial f}{\partial x_2} & = -2x_2x_0
+	\end{align}
+	Desde (3), tenemos dos opciones. Si $x_0 = 0$, entonces desde (2) tenemos $x_1$ = 0, y desde (1) tendríamos $x_2 = 0$, \nope. \\
+	Luego, $x_0 \not= 0$ y $x_2 = 0$. Luego, podemos reescribir (1) como \begin{align}
+		2Ax_1 + 3Bx_0
+	\end{align}
+	Desde (4) se llega a $2Ax_1 = -3Bx_0$. Si $A = 0$, entonces $B = 0$, por lo que $4A^3 + 27B^2 = 0$. Luego, asumamos $A \not= 0$. Esto dice que $x_1 = \frac{-3Bx_0}{2A}$. Reemplazando en (2), se llega a
+	$$3 \cdot \left( \frac{-3Bx_0}{2A} \right)^2 + Ax_0^2 = 0$$
+	Como $4A^2 \not= 0$, desarrollando la expresión llegamos a
+	$$27B^2x_0^2 + 4A^3x_0^2 = 0$$
+	Como $x_0 \not = 0$, al simplificar queda $27B^2 + 4A^3 = 0$. Por lo tanto, si $27B^2 + 4A^3 \not= 0$, no hay ceros comunes y la curva es suave.
+\end{sol}
+
+\end{document}
