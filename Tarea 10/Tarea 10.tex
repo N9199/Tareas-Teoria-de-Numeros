@@ -29,19 +29,38 @@
 \end{flushright}
 
 \begin{prob}[10 pts.]
-    ¿Existe algún entero $n>1$ tal que la suma $1+2+3+...+n$ sea un cubo perfecto?
+	¿Existe algún entero $n>1$ tal que la suma $1+2+3+...+n$ sea un cubo perfecto?
 \end{prob}
 
 \begin{sol}
-    
+
 \end{sol}
 
 \begin{prob}[10 pts.]
-    Muestre que existen infinitos números racionales $a\in\set{Q}$ tales que el polinomio $P_a(t)=at^2-12t+a^2$ es reducible sobre $\set{Q}$
+	Muestre que existen infinitos números racionales $a\in\set{Q}$ tales que el polinomio $P_a(t)=at^2-12t+a^2$ es reducible sobre $\set{Q}$
 \end{prob}
 
 \begin{sol}
-    
+	Que el polinomio sea reducible en $\set{Q}$ es equivalente a encontrar $\alpha,\beta,\gamma\in\set{Q}$ tal que $P_a(t)=(\alpha t+\beta)(t+\gamma)$
+	\[
+		\implies \alpha = a,\quad \alpha\gamma+\beta=-12,\quad \beta\gamma=a^2
+	\]
+	Con esto se puede escribir la siguiente ecuación
+	\[
+		\alpha^3=-\beta^2-12\beta
+	\]
+	La cual es un curva elíptica $E$, por lo que encontrar infinitos $a$ tales que $P_a(t)$ sea reducible en $\set{Q}$ es equivalente a encontrar infinitos puntos racionales en $E$.\\
+	Para trabajar esta curva elíptica se reescribe de la siguiente manera:
+	\begin{align*}
+		-\alpha^3    & =\beta^2+12\beta    \\
+		-\alpha^3+36 & =\beta^2+12\beta+36 \\
+		-\alpha^3+36 & =(\beta+6)^2
+    \end{align*}
+    Ahora usando el cambio de variable $y=\beta+6$ y $x=-\alpha$ nos queda
+    \[
+        y^2=x^3+36
+    \]
+    Vemos que $\Delta=-16(4\cdot 0+27\cdot36^2)\neq0$. Con lo cual podemos concluir que $E$ es suave. Con esto se sabe que $E(\set{Q})$\footnote{Tiene puntos racionales ya que $(4,10)$ es solución} es un grupo de orden infinito, por lo que hay infinitos puntos racionales en $E$, lo cual nos da lo que queríamos demostrar.
 \end{sol}
 
 \end{document}
