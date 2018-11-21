@@ -33,7 +33,19 @@
 \end{prob}
 
 \begin{sol}
-
+	Este problema se puede escribir de la siguiente forma:
+	\[
+		a^3=\frac{n(n+1)}2
+	\]
+	Donde la pregunta es si existe $n>1$ y $a\in\set{Z}$ tal que se cumpla la igualdad. Para ver esto hay que reescribirlo de la siguiente forma:
+	\[
+		(2a)^3+1=(2n+1)^2
+	\]
+	Si tomamos $y=2n+1$ y $x=2a$, tenemos la siguiente curva elíptica.
+	\[
+		y^2=x^3+1
+	\]
+	Y con ayuda de un programa \citep{prog}, notamos que el grupo de torsión es isomorfo a $\set{Z}/6\set{Z}$  y que tiene rango $0$. Además el programa nos da los siguientes puntos $(0,\pm1),(-1,0),(2,\pm3)$ y con el neutro son todos los elementos de la curva elíptica. Dado eso, notamos que el único punto que no es de interés es el $(2,\pm 3)$, ya que este se mapea a soluciones enteras del problema original, pero la solución es $n=1$, por lo que vemos que la única solución es esa, y que no existen $n>1$ que cumplen lo pedido.
 \end{sol}
 
 \begin{prob}[10 pts.]
@@ -55,12 +67,12 @@
 		-\alpha^3    & =\beta^2+12\beta    \\
 		-\alpha^3+36 & =\beta^2+12\beta+36 \\
 		-\alpha^3+36 & =(\beta+6)^2
-    \end{align*}
-    Ahora usando el cambio de variable $y=\beta+6$ y $x=-\alpha$ nos queda
-    \[
-        y^2=x^3+36
-    \]
-    Vemos que $\Delta=-16(4\cdot 0+27\cdot36^2)\neq0$. Con lo cual podemos concluir que $E$ es suave. Con esto se sabe que $E(\set{Q})$\footnote{Tiene puntos racionales ya que $(4,10)$ es solución y la curva tiene rango 1\citep{prog}} es un grupo de orden infinito, por lo que hay infinitos puntos racionales en $E$, lo cual nos da lo que queríamos demostrar.
+	\end{align*}
+	Ahora usando el cambio de variable $y=\beta+6$ y $x=-\alpha$ nos queda
+	\[
+		y^2=x^3+36
+	\]
+	Vemos que $\Delta=-16(4\cdot 0+27\cdot36^2)\neq0$. Con lo cual podemos concluir que $E$ es suave. Con esto se sabe que $E(\set{Q})$\footnote{Tiene puntos racionales ya que $(4,10)$ es solución y la curva tiene rango 1 \citep{prog}} es un grupo de orden infinito, por lo que hay infinitos puntos racionales en $E$, lo cual nos da lo que queríamos demostrar.
 \end{sol}
 
 \bibliographystyle{apacite}
